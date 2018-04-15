@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Lösningar i R (samt lite annat kul)</title>
+  <title>Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</title>
   <meta name="description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta property="og:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="shitoushan/losningar" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta name="twitter:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   
   <meta name="twitter:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Erik Stenberg">
 
 
-<meta name="date" content="2018-04-16">
+<meta name="date" content="2018-04-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,7 +114,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2" data-path="kom-igang.html"><a href="kom-igang.html"><i class="fa fa-check"></i><b>2</b> Kom igång</a><ul>
 <li class="chapter" data-level="2.1" data-path="kom-igang.html"><a href="kom-igang.html#viktiga-funktioner"><i class="fa fa-check"></i><b>2.1</b> Viktiga funktioner</a></li>
-<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a></li>
+<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a><ul>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#gapminder"><i class="fa fa-check"></i>gapminder</a></li>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#stats"><i class="fa fa-check"></i>stats</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html"><i class="fa fa-check"></i><b>3</b> Övningskompendium Deskriptiv Statistik</a><ul>
 <li class="chapter" data-level="3.1" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#deskription"><i class="fa fa-check"></i><b>3.1</b> Deskription</a><ul>
@@ -149,6 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="andra-paket.html"><a href="andra-paket.html"><i class="fa fa-check"></i><b>5</b> Andra paket</a><ul>
 <li class="chapter" data-level="5.1" data-path="andra-paket.html"><a href="andra-paket.html#leaflet"><i class="fa fa-check"></i><b>5.1</b> leaflet</a></li>
 <li class="chapter" data-level="5.2" data-path="andra-paket.html"><a href="andra-paket.html#rtweet"><i class="fa fa-check"></i><b>5.2</b> rtweet</a></li>
+<li class="chapter" data-level="5.3" data-path="andra-paket.html"><a href="andra-paket.html#quantmod"><i class="fa fa-check"></i><b>5.3</b> quantmod</a></li>
+<li class="chapter" data-level="5.4" data-path="andra-paket.html"><a href="andra-paket.html#dplyr"><i class="fa fa-check"></i><b>5.4</b> dplyr</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="andra-paket.html"><a href="andra-paket.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="andra-paket.html"><a href="andra-paket.html#select"><i class="fa fa-check"></i><b>5.4.2</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="andra-paket.html"><a href="andra-paket.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -159,7 +168,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R (samt lite annat kul)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</a>
           </h1>
         </div>
 
@@ -168,27 +177,28 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Lösningar i R (samt lite annat kul)</h1>
+<h1 class="title">Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</h1>
 <h4 class="author"><em>Erik Stenberg</em></h4>
-<h4 class="date"><em>2018-04-16</em></h4>
+<h4 class="date"><em>2018-04-19</em></h4>
 </div>
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">1</span> Introduktion</h1>
 <div id="motivering" class="section level2">
 <h2><span class="header-section-number">1.1</span> Motivering</h2>
-<p>Detta dokument är till för dig som läser kursen Statistik A4/A8 och är nyfiken på R. Innehållet är tänkt att förena lite nytta (lösa uppgifter) med nöje (lära dig lite R). Innehållet är inte på något sätt någonting du förväntas lära dig under kursen, men kan komma att vara nyttigt om du tänkt fortsätta med studier i statistik.</p>
-<p>Det är inte heller meningen att detta dokument skall fungera som en heltäckande introduktion till programmeringsspråket R. Det finns mängder väldigt välskrivna guider online som fokuserar mycket mer på hur språket är uppbygt. Lyckligtvis är R väldigt enkelt att komma igång med, och det krävs inte mycket förståelse för strukturer för att göra enkla beräkningar, skattningar av modeller, rita grafer och göra hypotestester. Jag rekommenderar att du hittar en guide Youtube eller i bokform för att komma igång med R. Tänk på att många guider online är riktade mot människor med en bakgrund i programmering. Försök hitta en guide på din nivå.</p>
+<p>Detta dokument är till för dig som läser kursen Statistik A4/A8 och är nyfiken på R. Innehållet är tänkt att förena lite nytta (lösa uppgifter) med nöje (lära dig lite R).</p>
+<p>Det är inte meningen att detta dokument skall fungera som en heltäckande introduktion till programmeringsspråket R. Det finns mängder av väldigt välskrivna guider online som fokuserar mycket mer på hur språket är uppbygt. Lyckligtvis är R väldigt enkelt att komma igång med, och det krävs inte mycket förståelse för själva språket för att göra enkla beräkningar, skattningar av modeller, rita grafer och göra hypotestester.</p>
 <p>R är programmeringsspråket vi kommer använda, och vi kommer göra allt arbete i RStudio, som är en IDE (<em>Integrated Developer Environment</em>) för R. RStudio gör arbete med R mycket enklare. Du behöver både R och RStudio på din egen dator, eller använda någon av datorerna i labben.</p>
+<p><a href="http://tryr.codeschool.com">Här</a> är en bra början för att lära dig syntaxen i R utan att behöva installera varker R eller RStudio. Om du har installerat R och RStudio, så är <a href="http://swirlstats.com/students.html">swirl</a> ett ganska roligt sätt att lära sig.</p>
 </div>
 <div id="varfor-r" class="section level2">
 <h2><span class="header-section-number">1.2</span> Varför R?</h2>
-<p>R och RStudio är gratis, populärt och enkelt att komma igång med. Det är framtaget framför allt för statistiska beräkningar och visualiseringar. Under det senaste årtiondet har populariteten växt enormt och i dag är R ett av de absolut mest använda verktygen för data-analys, både ute i verkligheten och inom universitetsvärlden. Om du någon gång tänkt skriva en uppsats i statistik, företagsekonomi nationalekonomi, eller någonting kvantitativt i vilket ämne som helst, kan R vara en bra vän att ha.</p>
+<p>R är gratis, populärt och enkelt att komma igång med. Under det senaste årtiondet har populariteten växt enormt och i dag är R ett av de absolut mest använda verktygen för data-analys, både ute i verkligheten och inom forskningsvärlden. Om du någon gång tänkt skriva en uppsats i statistik, företagsekonomi nationalekonomi, eller någonting kvantitativt i vilket ämne som helst, kan R vara en bra vän att ha.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fortunes)
-<span class="kw">fortune</span>(<span class="st">&#39;subway&#39;</span>)</code></pre></div>
-<pre><code>## 
+<span class="kw">fortune</span>(<span class="st">&#39;subway&#39;</span>)
+## 
 ## Soon, they&#39;ll be speaking R on the subway.
 ##    -- Michael Rennie (giving &#39;Kudos to the R support team&#39;)
-##       R-help (July 2004)</code></pre>
+##       R-help (July 2004)</code></pre></div>
 
 </div>
 </div>

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Lösningar i R (samt lite annat kul)</title>
+  <title>Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</title>
   <meta name="description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta property="og:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="shitoushan/losningar" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta name="twitter:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   
   <meta name="twitter:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Erik Stenberg">
 
 
-<meta name="date" content="2018-04-16">
+<meta name="date" content="2018-04-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,7 +114,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2" data-path="kom-igang.html"><a href="kom-igang.html"><i class="fa fa-check"></i><b>2</b> Kom igång</a><ul>
 <li class="chapter" data-level="2.1" data-path="kom-igang.html"><a href="kom-igang.html#viktiga-funktioner"><i class="fa fa-check"></i><b>2.1</b> Viktiga funktioner</a></li>
-<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a></li>
+<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a><ul>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#gapminder"><i class="fa fa-check"></i>gapminder</a></li>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#stats"><i class="fa fa-check"></i>stats</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html"><i class="fa fa-check"></i><b>3</b> Övningskompendium Deskriptiv Statistik</a><ul>
 <li class="chapter" data-level="3.1" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#deskription"><i class="fa fa-check"></i><b>3.1</b> Deskription</a><ul>
@@ -149,6 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="andra-paket.html"><a href="andra-paket.html"><i class="fa fa-check"></i><b>5</b> Andra paket</a><ul>
 <li class="chapter" data-level="5.1" data-path="andra-paket.html"><a href="andra-paket.html#leaflet"><i class="fa fa-check"></i><b>5.1</b> leaflet</a></li>
 <li class="chapter" data-level="5.2" data-path="andra-paket.html"><a href="andra-paket.html#rtweet"><i class="fa fa-check"></i><b>5.2</b> rtweet</a></li>
+<li class="chapter" data-level="5.3" data-path="andra-paket.html"><a href="andra-paket.html#quantmod"><i class="fa fa-check"></i><b>5.3</b> quantmod</a></li>
+<li class="chapter" data-level="5.4" data-path="andra-paket.html"><a href="andra-paket.html#dplyr"><i class="fa fa-check"></i><b>5.4</b> dplyr</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="andra-paket.html"><a href="andra-paket.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="andra-paket.html"><a href="andra-paket.html#select"><i class="fa fa-check"></i><b>5.4.2</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="andra-paket.html"><a href="andra-paket.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -159,7 +168,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R (samt lite annat kul)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</a>
           </h1>
         </div>
 
@@ -235,10 +244,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="dv">1</span>, <span class="dt">upper.x =</span> <span class="dv">2</span>)   <span class="co"># ii</span>
 <span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="op">-</span><span class="dv">1</span>, <span class="dt">upper.x =</span> <span class="dv">2</span>)  <span class="co"># iii</span>
 <span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="op">-</span><span class="dv">3</span>, <span class="dt">upper.x =</span> <span class="op">-</span><span class="dv">1</span>) <span class="co"># iv</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-56-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-56-3.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-56-4.png" width="50%" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-67-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-67-3.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-67-4.png" width="50%" /></p>
 <p>Dessa kurvor är väldigt bra hjälp för att förstå vad man bör göra för trix för att få fram rätt svar. I a) är vi intresserade av <span class="math display">\[Pr(0&lt;Z&lt;1)\]</span> Vi är alltså ute efter den blåa skuggade delen av Figur <a href="ovningskompendium-sannolikhetslara-och-inferens.html#fig:dens-fig">4.1</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>( <span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">density=</span><span class="dv">10</span>)
-<span class="kw">polygon</span>(cordx, cordy,<span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">density=</span><span class="dv">51</span>)</code></pre></div>
 <div class="figure"><span id="fig:dens-fig"></span>
 <img src="_main_files/figure-html/dens-fig-1.png" alt="$Pr(0&lt;Z&lt;1)$" width="672" />
 <p class="caption">
@@ -273,11 +280,11 @@ Figure 4.1: <span class="math inline">\(Pr(0&lt;Z&lt;1)\)</span>
 <p>Vi använder oss återigen av <code>pnorm()</code></p>
 <p>I och med att normalfördelningne är symmetrisk så räcker det med att vi tittar på ena sidan och multiplicerar arean med två, precis som i facit. Det vill säga, vi hittar följande area och multiplicerar med två</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="dt">mu=</span><span class="dv">10</span>,<span class="dt">sigma=</span><span class="dv">4</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="75%" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="75%" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">pnorm</span>(<span class="dv">0</span>,<span class="dt">mean=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">4</span>)<span class="op">*</span><span class="dv">2</span>,<span class="dv">4</span>)
 ## [1] 0.0124</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>(<span class="dv">6</span>,<span class="dv">15</span>,<span class="dt">mu =</span> <span class="dv">10</span>, <span class="dt">sigma =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="75%" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="75%" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">4</span>)<span class="op">-</span><span class="kw">pnorm</span>(<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">4</span>)
 ## [1] 0.735695</code></pre></div>
 </div>

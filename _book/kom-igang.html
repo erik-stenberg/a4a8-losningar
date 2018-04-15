@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Lösningar i R (samt lite annat kul)</title>
+  <title>Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</title>
   <meta name="description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta property="og:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="shitoushan/losningar" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta name="twitter:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   
   <meta name="twitter:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Erik Stenberg">
 
 
-<meta name="date" content="2018-04-16">
+<meta name="date" content="2018-04-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,7 +114,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2" data-path="kom-igang.html"><a href="kom-igang.html"><i class="fa fa-check"></i><b>2</b> Kom igång</a><ul>
 <li class="chapter" data-level="2.1" data-path="kom-igang.html"><a href="kom-igang.html#viktiga-funktioner"><i class="fa fa-check"></i><b>2.1</b> Viktiga funktioner</a></li>
-<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a></li>
+<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a><ul>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#gapminder"><i class="fa fa-check"></i>gapminder</a></li>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#stats"><i class="fa fa-check"></i>stats</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html"><i class="fa fa-check"></i><b>3</b> Övningskompendium Deskriptiv Statistik</a><ul>
 <li class="chapter" data-level="3.1" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#deskription"><i class="fa fa-check"></i><b>3.1</b> Deskription</a><ul>
@@ -149,6 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="andra-paket.html"><a href="andra-paket.html"><i class="fa fa-check"></i><b>5</b> Andra paket</a><ul>
 <li class="chapter" data-level="5.1" data-path="andra-paket.html"><a href="andra-paket.html#leaflet"><i class="fa fa-check"></i><b>5.1</b> leaflet</a></li>
 <li class="chapter" data-level="5.2" data-path="andra-paket.html"><a href="andra-paket.html#rtweet"><i class="fa fa-check"></i><b>5.2</b> rtweet</a></li>
+<li class="chapter" data-level="5.3" data-path="andra-paket.html"><a href="andra-paket.html#quantmod"><i class="fa fa-check"></i><b>5.3</b> quantmod</a></li>
+<li class="chapter" data-level="5.4" data-path="andra-paket.html"><a href="andra-paket.html#dplyr"><i class="fa fa-check"></i><b>5.4</b> dplyr</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="andra-paket.html"><a href="andra-paket.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="andra-paket.html"><a href="andra-paket.html#select"><i class="fa fa-check"></i><b>5.4.2</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="andra-paket.html"><a href="andra-paket.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -159,7 +168,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R (samt lite annat kul)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</a>
           </h1>
         </div>
 
@@ -182,8 +191,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## [1] 2</code></pre></div>
 <p>I detta dokument kommer resultat från R alltid föregås av <code>##</code>. Det är så du kan se skillnad på vad jag skriver och vad R ger tillbaka. Ibland kommer du även se enskilda <code>#</code> i koden. Allting som skrivs efter <code>#</code> behandlas av R som icke-kod. Det vill säga, jag kommer ofta använda <code># kommentar</code> i koden för att förtydliga någonting jag gör.</p>
 <p>Vektorer är den absolut vanligaste datatypen i R, och du kommer vid flera tillfällen behöva skapa vektorer. Ofta skapar vi vektorer med funktionen <code>c()</code>. För att se om ett objekt är en vektor använder du med framgång <code>is.vector</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)
-<span class="kw">is.vector</span>(x)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)  <span class="co"># jag skapar en vektor och kallar den x</span>
+<span class="kw">is.vector</span>(x)           <span class="co"># jag frågar R om x är en vektor</span>
 ## [1] TRUE</code></pre></div>
 <p>I detta fallet är <code>x</code> alltså en numerisk vektor, men det finns andra sorter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;är&quot;</span>,<span class="st">&quot;kul&quot;</span>)
@@ -197,7 +206,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stickprov &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">170</span>, <span class="dv">165</span>, <span class="dv">151</span>, <span class="dv">191</span>, <span class="dv">180</span>, <span class="dv">172</span>, <span class="dv">181</span>, <span class="dv">166</span>, <span class="dv">155</span>,
                <span class="dv">194</span>, <span class="dv">166</span>, <span class="dv">175</span>, <span class="dv">144</span>, <span class="dv">188</span>, <span class="dv">192</span>, <span class="dv">164</span>, <span class="dv">178</span>, <span class="dv">201</span>)</code></pre></div>
 <p>Vi kan enkelt hitta stickprovsstorlek, medelvärde, standardavvikelse och skapa ett histogram</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(stickprov) <span class="co"># stickprovsstorlek</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(stickprov) <span class="co"># längd (stickprovsstorlek)</span>
 ## [1] 18
 <span class="kw">mean</span>(stickprov)   <span class="co"># medelvärde</span>
 ## [1] 174.0556
@@ -205,12 +214,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## [1] 15.64109
 
 <span class="kw">hist</span>(stickprov)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<p>Låt säga att jag har två vektorer, en med namn på universitet och en med antal studenter (enligt wikipedia). Men jag vill ha dem i samma objekt. Då skapar jag med fördel en såkallad dataframe.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-namn &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;UU&quot;</span>, <span class="st">&quot;KTH&quot;</span>, <span class="st">&quot;SU&quot;</span>, <span class="st">&quot;LU&quot;</span>)
-studenter &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24623</span>, <span class="dv">12000</span>, <span class="dv">29087</span>, <span class="dv">40000</span>)
-z &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(namn,studenter)
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Låt säga att jag har två vektorer, en med namn på universitet och en med antal studenter (enligt wikipedia).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">namn &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;UU&quot;</span>, <span class="st">&quot;KTH&quot;</span>, <span class="st">&quot;SU&quot;</span>, <span class="st">&quot;LU&quot;</span>)
+studenter &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24623</span>, <span class="dv">12000</span>, <span class="dv">29087</span>, <span class="dv">40000</span>)</code></pre></div>
+<p>Om jag istället för att ha två separata objekt, <code>namn</code> och <code>studenter</code> bara vill ha ett objekt. Då skapar jag med fördel en såkallad data frame, med funktionen <code>cbind.data.frame()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(namn,studenter)
 
 <span class="kw">is.vector</span>(z)     <span class="co"># z är inte längre en vektor</span>
 ## [1] FALSE
@@ -223,7 +232,7 @@ z &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(namn,st
 ## 2  KTH     12000
 ## 3   SU     29087
 ## 4   LU     40000</code></pre></div>
-<p>För att “komma åt” data från en dataframe kan jag använda <code>$</code>.</p>
+<p>För att “komma åt” data från en data frame kan jag använda <code>$</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z<span class="op">$</span>studenter
 ## [1] 24623 12000 29087 40000</code></pre></div>
 <p>Eftersom <code>z$studenter</code> är en numerisk vektor kan jag göra precis samma sak på <code>z$studenter</code> som jag kunde göra på stickprovet ovan.</p>
@@ -239,11 +248,13 @@ z &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(namn,st
 </div>
 <div id="funktioner-och-paket" class="section level2">
 <h2><span class="header-section-number">2.2</span> Funktioner och paket</h2>
-<p>En sak som är bra med RStudio är att det finns väldigt bra dokumentation utan att du behöver gå till din webbläsare. Om du undrar hur en funktion fungerar så räcker det ofta med att skriva ett frågetecken följt av funktionens namn, ex: <code>?mean</code>, och en hjälp-sida visas i din “viewer pane” till höger. Längst ner på hjälp-sidan finns ofta enkla exempel.</p>
-<p>Många funktioner i R kommer från externa <em>paket</em>. Vissa av dem är otroligt enkla att använda, andra tar lång tid att lära sig. Vem som helst kan skriva ett paket, och de är enkla att installera. Det finns otroligt många paket, och användningsområdena är nästan lika många. För att demonstrera hur installation av ett paket går till kan vi titta på ett paket som heter <strong>gapminder</strong>, som innehåller data tillänglig på <a href="https://www.gapminder.org/">Gapminder.org</a>.</p>
+<div id="gapminder" class="section level3 unnumbered">
+<h3>gapminder</h3>
+<p>En sak som är bra med RStudio är att det finns väldigt bra dokumentation utan att du behöver gå till din webbläsare och söka. Om du undrar hur en funktion fungerar så räcker det ofta med att skriva ett frågetecken följt av funktionens namn, ex: <code>?mean</code>, och en hjälp-sida visas i din “viewer pane” till höger. Längst ner på hjälp-sidan finns ofta enkla exempel.</p>
+<p>Många funktioner i R kommer från externa <em>paket</em>. Vissa av dem är otroligt enkla att använda, andra tar lång tid att lära sig. Vem som helst kan skriva ett paket, och de är enkla att installera. Det finns otroligt många paket, och användningsområdena är nästan lika många. För att demonstrera hur installationen av ett paket går till kan vi titta på ett paket som heter <strong>gapminder</strong>, som innehåller data tillänglig på <a href="https://www.gapminder.org/">Gapminder.org</a>.</p>
 <p>Första gången du använder ett paket behöver du installera det. Det gör du genom att skriva</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;gapminder&quot;</span>)</code></pre></div>
-<p>Observera citationstecken. Detta behöver du bara göra en gång på din dator. När du vill använda paketet i framtiden måste du, varje gång du öppnar RStudio, skriva</p>
+<p>Observera citationstecken. Detta behöver du bara göra <strong>en gång</strong> på din dator. När du vill använda paketet i framtiden måste du, varje gång du öppnar RStudio, skriva</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gapminder)</code></pre></div>
 <p>Paketet <strong>gapminder</strong> är ett litet paket och innehåller inga funktioner, bara dataset. Ett av dataseten heter <code>gapminder</code> och innehåller data på bland annat förväntad linvslängd, population, BNP etc. Du laddar ner datan genom att helt enkelt skriva</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder</code></pre></div>
@@ -261,20 +272,27 @@ z &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(namn,st
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.
 ## # ... with 1,694 more rows</code></pre>
+<p>Du behöver inte bry dig om texten <code>A tibble: 1,704 x 6</code>. En <em>tibble</em> är bara en sorts data frame. Vi kan försäkra oss om detta genom att kolla så att gm nedan <code>is.data.frame()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.data.frame</span>(gapminder)
+## [1] TRUE</code></pre></div>
+<p>Det vill säga, det är fritt fram att göra alla sorters beräkningar på detta data set precis som vi gjorde på vår data frame med studenter och universitet ovan. Faktum är i sektion 5.4 har visar jag lite olika funktioner, grafer och beräkningar du kan göra på just detta data set.</p>
+</div>
+<div id="stats" class="section level3 unnumbered">
+<h3>stats</h3>
 <p>Ett annat paket som, likt de flesta andra paket, faktiskt innehåller flera funktioner är <strong>stats</strong> som innehåller funktioner för statistiska beräkningar med mera. Här är ett par exempel funktioner. <strong>stats</strong> är förinstallerat och igång vid uppstart, så du behöver varken installera det med <code>install.packages(&quot;stats&quot;)</code> eller skriva <code>library(stats)</code>.</p>
 <p>Ett exempel på funktioner i <strong>stats</strong> är <code>rnorm()</code> som genererar slumpmässiga tal från normalfördelningen.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-## [1]  0.1696365 -0.7840147  0.8438367  1.7595717  0.6021140</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co"># Ger oss fem slumpmässiga nummer från N(0,1)</span>
+## [1]  0.56342007  0.47791866  0.04494871 -2.15711095 -0.15215089</code></pre></div>
 <p><code>n</code>, <code>mean</code> och <code>sd</code> är stickprovsstorlek, medelvärde och standardavvikelse respektive. De kallas <em>argument</em>. Funktionen <code>rnorm()</code> har bara dessa tre argument, och de behöver inte skrivas ut. Det vill säga, så länge du håller koll på i vilken ordning argumenten kommer så kan du lika gärna skriva</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># Ger oss alltså fem slumpmässiga nummer från N(0,1)</span>
-## [1] -1.558325277  2.367060878 -1.518652373  0.006873676  0.677454884</code></pre></div>
-<p>Ofta har funktionerna ett “default” värde. Det vill säga, ett värde på argumentet om du inte själv specifierar det. I fallet <code>rnorm()</code> kan du säkert gissa dig till vilket medelvärde och vilken standardavvikelse som är <code>default</code>, nämligen <code>mean=0</code> och <code>sd=1</code>, det vill säga Z-fördelningen. Stickprovsstorlek har däremot inget <code>default</code>, och måste specifieras manuellt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># Samma resultat (men så klart nya tal)</span>
+## [1] -0.919841975 -0.645369495  0.003619549  1.105885779 -0.236082266</code></pre></div>
+<p>Ofta har funktionernas argument ett “default” värde. Det vill säga, ett värde på argumentet om du inte själv specifierar det. I fallet <code>rnorm()</code> kan du säkert gissa dig till vilket medelvärde och vilken standardavvikelse som är <code>default</code>, nämligen <code>mean=0</code> och <code>sd=1</code>, det vill säga Z-fördelningen. Stickprovsstorlek har däremot inget <code>default</code>, och måste specifieras manuellt.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>)
-## [1] 0.8452033 0.4663501 0.8586166 0.1213616 1.1288426</code></pre></div>
+## [1]  0.69932743 -2.16824661  0.86137501 -0.07115046 -0.62172618</code></pre></div>
 <p>Låt oss ta ett större stickprov, spara resultatet som <code>x</code> och skapa ett histogram, med funktionen <code>hist()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100000</span>)
 <span class="kw">hist</span>(x)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Lek runt lite med de olika argumenten. För en full lista med alla argument, titta på hjälpsidan genom <code>?hist</code></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(x,
      <span class="dt">breaks =</span> <span class="dv">100</span>,
@@ -282,8 +300,63 @@ z &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(namn,st
      <span class="dt">ylab =</span> <span class="st">&quot;text på y-axeln&quot;</span>,
      <span class="dt">xlab =</span> <span class="st">&quot;text på x-axeln&quot;</span>,
      <span class="dt">main =</span> <span class="st">&quot;Stickprov om 100,000 från N(0,1)&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>En annan funktion vi kommer använda är <code>pnorm()</code>. <code>pnorm()</code> ger dig arean under en normalfördelningskurva för en given normalfördelning. Säg till exempel att vi har en normalfördelning med medelvärde 0 och standardavvikelse 1, det vill säga <span class="math inline">\(N(0,1)\)</span>. Med <code>pnorm()</code> kan du då hitta <span class="math inline">\(Pr(Z\leq z)\)</span>, det vill säga, sannolikheten att ett slumpmässigt valt tal från Z-fördelningen är mindre eller lika med <span class="math inline">\(z\)</span>. För <span class="math inline">\(z=0\)</span> skriver du</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">0</span>, <span class="dt">mean =</span> <span class="dv">0</span> , <span class="dt">sd=</span><span class="dv">1</span>)
+## [1] 0.5</code></pre></div>
+<p>vilket är samma som den skuggade delen nedan</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Du kan såklart även hitta arean mellan två punkter genom att subtrahera, precis som du gör när du hittar <span class="math inline">\(Pr(0\leq Z \leq 1)\)</span> för hand.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">1</span>, <span class="dt">mean =</span> <span class="dv">0</span> , <span class="dt">sd=</span><span class="dv">1</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">0</span>, <span class="dt">mean =</span> <span class="dv">0</span> , <span class="dt">sd=</span><span class="dv">1</span>)
+## [1] 0.3413447</code></pre></div>
+<p>Vilket motsvara arean</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p>Faktum är att <strong>Tabell 5.2A</strong> i formelsamlingen kan återskapas genom att kalla funktionen <code>pnorm()</code> på varje tal i sekvensen <span class="math inline">\(0, 0.01, 0.02, 0.03, ... , 3.59\)</span>. För at helt återskapa Tabell 5.2A så måste vi också avrunda varje sannolikhet till 4 decimaler med <code>round()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">pnorm</span>(<span class="kw">seq</span>(<span class="dv">0</span>,<span class="fl">3.59</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="dt">mean =</span> <span class="dv">0</span>,<span class="dt">sd =</span> <span class="dv">1</span>),<span class="dv">4</span>)</code></pre></div>
+<pre><code>##   [1] 0.5000 0.5040 0.5080 0.5120 0.5160 0.5199 0.5239 0.5279 0.5319 0.5359
+##  [11] 0.5398 0.5438 0.5478 0.5517 0.5557 0.5596 0.5636 0.5675 0.5714 0.5753
+##  [21] 0.5793 0.5832 0.5871 0.5910 0.5948 0.5987 0.6026 0.6064 0.6103 0.6141
+##  [31] 0.6179 0.6217 0.6255 0.6293 0.6331 0.6368 0.6406 0.6443 0.6480 0.6517
+##  [41] 0.6554 0.6591 0.6628 0.6664 0.6700 0.6736 0.6772 0.6808 0.6844 0.6879
+##  [51] 0.6915 0.6950 0.6985 0.7019 0.7054 0.7088 0.7123 0.7157 0.7190 0.7224
+##  [61] 0.7257 0.7291 0.7324 0.7357 0.7389 0.7422 0.7454 0.7486 0.7517 0.7549
+##  [71] 0.7580 0.7611 0.7642 0.7673 0.7704 0.7734 0.7764 0.7794 0.7823 0.7852
+##  [81] 0.7881 0.7910 0.7939 0.7967 0.7995 0.8023 0.8051 0.8078 0.8106 0.8133
+##  [91] 0.8159 0.8186 0.8212 0.8238 0.8264 0.8289 0.8315 0.8340 0.8365 0.8389
+## [101] 0.8413 0.8438 0.8461 0.8485 0.8508 0.8531 0.8554 0.8577 0.8599 0.8621
+## [111] 0.8643 0.8665 0.8686 0.8708 0.8729 0.8749 0.8770 0.8790 0.8810 0.8830
+## [121] 0.8849 0.8869 0.8888 0.8907 0.8925 0.8944 0.8962 0.8980 0.8997 0.9015
+## [131] 0.9032 0.9049 0.9066 0.9082 0.9099 0.9115 0.9131 0.9147 0.9162 0.9177
+## [141] 0.9192 0.9207 0.9222 0.9236 0.9251 0.9265 0.9279 0.9292 0.9306 0.9319
+## [151] 0.9332 0.9345 0.9357 0.9370 0.9382 0.9394 0.9406 0.9418 0.9429 0.9441
+## [161] 0.9452 0.9463 0.9474 0.9484 0.9495 0.9505 0.9515 0.9525 0.9535 0.9545
+## [171] 0.9554 0.9564 0.9573 0.9582 0.9591 0.9599 0.9608 0.9616 0.9625 0.9633
+## [181] 0.9641 0.9649 0.9656 0.9664 0.9671 0.9678 0.9686 0.9693 0.9699 0.9706
+## [191] 0.9713 0.9719 0.9726 0.9732 0.9738 0.9744 0.9750 0.9756 0.9761 0.9767
+## [201] 0.9772 0.9778 0.9783 0.9788 0.9793 0.9798 0.9803 0.9808 0.9812 0.9817
+## [211] 0.9821 0.9826 0.9830 0.9834 0.9838 0.9842 0.9846 0.9850 0.9854 0.9857
+## [221] 0.9861 0.9864 0.9868 0.9871 0.9875 0.9878 0.9881 0.9884 0.9887 0.9890
+## [231] 0.9893 0.9896 0.9898 0.9901 0.9904 0.9906 0.9909 0.9911 0.9913 0.9916
+## [241] 0.9918 0.9920 0.9922 0.9925 0.9927 0.9929 0.9931 0.9932 0.9934 0.9936
+## [251] 0.9938 0.9940 0.9941 0.9943 0.9945 0.9946 0.9948 0.9949 0.9951 0.9952
+## [261] 0.9953 0.9955 0.9956 0.9957 0.9959 0.9960 0.9961 0.9962 0.9963 0.9964
+## [271] 0.9965 0.9966 0.9967 0.9968 0.9969 0.9970 0.9971 0.9972 0.9973 0.9974
+## [281] 0.9974 0.9975 0.9976 0.9977 0.9977 0.9978 0.9979 0.9979 0.9980 0.9981
+## [291] 0.9981 0.9982 0.9982 0.9983 0.9984 0.9984 0.9985 0.9985 0.9986 0.9986
+## [301] 0.9987 0.9987 0.9987 0.9988 0.9988 0.9989 0.9989 0.9989 0.9990 0.9990
+## [311] 0.9990 0.9991 0.9991 0.9991 0.9992 0.9992 0.9992 0.9992 0.9993 0.9993
+## [321] 0.9993 0.9993 0.9994 0.9994 0.9994 0.9994 0.9994 0.9995 0.9995 0.9995
+## [331] 0.9995 0.9995 0.9995 0.9996 0.9996 0.9996 0.9996 0.9996 0.9996 0.9997
+## [341] 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9998
+## [351] 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998</code></pre>
+<p>Motsvarande funktion för att hitta vilket z-värde som representerar en given sannolikhet (<strong>Tabell 5.2B</strong>) är funktionen <code>qnorm()</code>. Tabell 5.2B ger dig vilket Z-värde som har <span class="math inline">\(P\)</span> procent <em>till höger om sig</em>, medan <code>qnorm()</code> ger dig vilket z-värde som har <span class="math inline">\(P\)</span> procent till <em>vänster om sig</em>. Så om vi skriver <code>-qnorm()</code> får vi samma resultat som tabellen i formelsamligen. Det vill säga</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">-</span><span class="kw">qnorm</span>(<span class="fl">0.025</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+## [1] 1.959964</code></pre></div>
+<p>Vilket motsvara följande area under Z-fördelningen.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>Det vill säga, sannolikheten <span class="math inline">\(2.5 \%\)</span> är associerat med z-värdet <span class="math inline">\(1.959964 \approx 1.96\)</span></p>
 
+</div>
 </div>
 </div>
             </section>

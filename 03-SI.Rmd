@@ -97,7 +97,7 @@ cordy <- c(0,dnorm(seq(lower.x,upper.x,step),mu,sigma),0)
 
 Dessa kurvor är väldigt bra hjälp för att förstå vad man bör göra för trix för att få fram rätt svar. I a) är vi intresserade av $$Pr(0<Z<1)$$ Vi är alltså ute efter den blåa skuggade delen av Figur \@ref(fig:dens-fig). 
 
-```{r dens-fig,fig.cap='$Pr(0<Z<1)$'}
+```{r dens-fig,fig.cap='$Pr(0<Z<1)$', echo=FALSE}
 skugga( -3, 1, col="red",density=10)
 polygon(cordx, cordy,col="lightblue", density=51)
 ```

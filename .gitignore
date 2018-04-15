@@ -3,3 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
+_ignore
+_book
+_bookdown_files

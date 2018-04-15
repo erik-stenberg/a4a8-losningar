@@ -1,5 +1,5 @@
 --- 
-title: "Lösningar i R (samt lite annat kul)"
+title: "Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)"
 author: "Erik Stenberg"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -7,6 +7,8 @@ output: bookdown::gitbook
 documentclass: book
 github-repo: shitoushan/losningar
 description: "Lösningar för vissa uppgifter i kursen Statstik A4/A8"
+always_allow_html: yes
+keep_tex: yes
 ---
 
 ```{r include=FALSE}
@@ -18,20 +20,29 @@ knitr::write_bib(c(
 ```
 
 
+
+
 # Introduktion {#intro}
+```{r,echo=FALSE,out.width = "300px",eval=FALSE}
+knitr::include_graphics("images/3.png")
+knitr::include_graphics("images/4.png")
+```
+
 
 ## Motivering
-Detta dokument är till för dig som läser kursen Statistik A4/A8 och är nyfiken på R. Innehållet är tänkt att förena lite nytta (lösa uppgifter) med nöje (lära dig lite R). Innehållet är inte på något sätt någonting du förväntas lära dig under kursen, men kan komma att vara nyttigt om du tänkt fortsätta med studier i statistik.
+Detta dokument är till för dig som läser kursen Statistik A4/A8 och är nyfiken på R. Innehållet är tänkt att förena lite nytta (lösa uppgifter) med nöje (lära dig lite R).
 
-Det är inte heller meningen att detta dokument skall fungera som en heltäckande introduktion till programmeringsspråket R. Det finns mängder väldigt välskrivna guider online som fokuserar mycket mer på hur språket är uppbygt. Lyckligtvis är R väldigt enkelt att komma igång med, och det krävs inte mycket förståelse för strukturer för att göra enkla beräkningar, skattningar av modeller, rita grafer och göra hypotestester. Jag rekommenderar att du hittar en guide Youtube eller i bokform för att komma igång med R. Tänk på att många guider online är riktade mot människor med en bakgrund i programmering. Försök hitta en guide på din nivå.
+Det är inte meningen att detta dokument skall fungera som en heltäckande introduktion till programmeringsspråket R. Det finns mängder av väldigt välskrivna guider online som fokuserar mycket mer på hur språket är uppbygt. Lyckligtvis är R väldigt enkelt att komma igång med, och det krävs inte mycket förståelse för själva språket för att göra enkla beräkningar, skattningar av modeller, rita grafer och göra hypotestester. 
+
 
 R är programmeringsspråket vi kommer använda, och vi kommer göra allt arbete i RStudio, som är en IDE (*Integrated Developer Environment*) för R. RStudio gör arbete med R mycket enklare. Du behöver både R och RStudio på din egen dator, eller använda någon av datorerna i labben.
 
+[Här](http://tryr.codeschool.com) är en bra början för att lära dig syntaxen i R utan att behöva installera varker R eller RStudio. Om du har installerat R och RStudio, så är [swirl](http://swirlstats.com/students.html) ett ganska roligt sätt att lära sig.
 
 ## Varför R?
-R och RStudio är gratis, populärt och enkelt att komma igång med. Det är framtaget framför allt för statistiska beräkningar och visualiseringar. Under det senaste årtiondet har populariteten växt enormt och i dag är R ett av de absolut mest använda verktygen för data-analys, både ute i verkligheten och inom universitetsvärlden. Om du någon gång tänkt skriva en uppsats i statistik, företagsekonomi nationalekonomi, eller någonting kvantitativt i vilket ämne som helst, kan R vara en bra vän att ha.
+R är gratis, populärt och enkelt att komma igång med. Under det senaste årtiondet har populariteten växt enormt och i dag är R ett av de absolut mest använda verktygen för data-analys, både ute i verkligheten och inom forskningsvärlden. Om du någon gång tänkt skriva en uppsats i statistik, företagsekonomi nationalekonomi, eller någonting kvantitativt i vilket ämne som helst, kan R vara en bra vän att ha.
 
-```{r}
+```{r, collapse=TRUE}
 library(fortunes)
 fortune('subway')
 ```

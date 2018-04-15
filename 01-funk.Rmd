@@ -32,8 +32,8 @@ I detta dokument kommer resultat från R alltid föregås av `##`. Det är så d
 Vektorer är den absolut vanligaste datatypen i R, och du kommer vid flera tillfällen behöva skapa vektorer. Ofta skapar vi vektorer med funktionen `c()`. För att se om ett objekt är en vektor använder du med framgång `is.vector`.
 
 ```{r,collapse=TRUE}
-x <- c(1,5,7,2,4,6,7)
-is.vector(x)
+x <- c(1,5,7,2,4,6,7)  # jag skapar en vektor och kallar den x
+is.vector(x)           # jag frågar R om x är en vektor
 ```
 I detta fallet är `x` alltså en numerisk vektor, men det finns andra sorter.
 
@@ -53,19 +53,24 @@ stickprov <- c(170, 165, 151, 191, 180, 172, 181, 166, 155,
 Vi kan enkelt hitta stickprovsstorlek, medelvärde, standardavvikelse och skapa ett histogram
 
 ```{r, collapse=TRUE}
-length(stickprov) # stickprovsstorlek
+length(stickprov) # längd (stickprovsstorlek)
 mean(stickprov)   # medelvärde
 sd(stickprov)     # standardavvikelse
 
 hist(stickprov)
 ```
 
-Låt säga att jag har två vektorer, en med namn på universitet och en med antal studenter (enligt wikipedia). Men jag vill ha dem i samma objekt. Då skapar jag med fördel en såkallad dataframe. 
+Låt säga att jag har två vektorer, en med namn på universitet och en med antal studenter (enligt wikipedia). 
 
-```{r,collapse=TRUE}
-
+```{r, collapse=TRUE}
 namn <- c("UU", "KTH", "SU", "LU")
 studenter <- c(24623, 12000, 29087, 40000)
+```
+
+
+Om jag istället för att ha två separata objekt, `namn` och `studenter` bara vill ha ett objekt. Då skapar jag med fördel en såkallad data frame, med funktionen `cbind.data.frame()`
+
+```{r,collapse=TRUE}
 z <- cbind.data.frame(namn,studenter)
 
 is.vector(z)     # z är inte längre en vektor
@@ -78,7 +83,7 @@ Så hur ser `z` ut?
 z
 ```
 
-För att "komma åt" data från en dataframe kan jag använda `$`.
+För att "komma åt" data från en data frame kan jag använda `$`.
 
 ```{r,collapse=TRUE}
 z$studenter
@@ -98,15 +103,17 @@ mean(z$namn)
 
 
 ## Funktioner och paket
-En sak som är bra med RStudio är att det finns väldigt bra dokumentation utan att du behöver gå till din webbläsare. Om du undrar hur en funktion fungerar så räcker det ofta med att skriva ett frågetecken följt av funktionens namn, ex: `?mean`, och en hjälp-sida visas i din "viewer pane" till höger.  Längst ner på hjälp-sidan finns ofta enkla exempel.
+### gapminder{-}
+En sak som är bra med RStudio är att det finns väldigt bra dokumentation utan att du behöver gå till din webbläsare och söka. Om du undrar hur en funktion fungerar så räcker det ofta med att skriva ett frågetecken följt av funktionens namn, ex: `?mean`, och en hjälp-sida visas i din "viewer pane" till höger.  Längst ner på hjälp-sidan finns ofta enkla exempel.
 
-Många funktioner i R kommer från externa *paket*. Vissa av dem är otroligt enkla att använda, andra tar lång tid att lära sig. Vem som helst kan skriva ett paket, och de är enkla att installera. Det finns otroligt många paket, och användningsområdena är nästan lika många. För att demonstrera hur installation av ett paket går till kan vi titta på ett paket som heter **gapminder**, som innehåller data tillänglig på [Gapminder.org](https://www.gapminder.org/).
+Många funktioner i R kommer från externa *paket*. Vissa av dem är otroligt enkla att använda, andra tar lång tid att lära sig. Vem som helst kan skriva ett paket, och de är enkla att installera. Det finns otroligt många paket, och användningsområdena är nästan lika många. För att demonstrera hur installationen av ett paket går till kan vi titta på ett paket som heter **gapminder**, som innehåller data tillänglig på [Gapminder.org](https://www.gapminder.org/).
 
 Första gången du använder ett paket behöver du installera det. Det gör du genom att skriva
 ```{r,eval=F}
 install.packages("gapminder")
 ```
-Observera citationstecken. Detta behöver du bara göra en gång på din dator. När du vill använda paketet i framtiden måste du, varje gång du öppnar RStudio, skriva
+
+Observera citationstecken. Detta behöver du bara göra **en gång** på din dator. När du vill använda paketet i framtiden måste du, varje gång du öppnar RStudio, skriva
 
 ```{r,eval=TRUE}
 library(gapminder)
@@ -118,21 +125,30 @@ Paketet **gapminder** är ett litet paket och innehåller inga funktioner, bara 
 gapminder
 ```
 
+Du behöver inte bry dig om texten `A tibble: 1,704 x 6`. En *tibble* är bara en sorts data frame. Vi kan försäkra oss om detta genom att kolla så att gm nedan `is.data.frame()`
 
+```{r,collapse=TRUE}
+is.data.frame(gapminder)
+```
+
+Det vill säga, det är fritt fram att göra alla sorters beräkningar på detta data set precis som vi gjorde på vår data frame med studenter och universitet ovan. Faktum är i sektion 5.4 har visar jag lite olika funktioner, grafer och beräkningar du kan göra på just detta data set.
+
+
+### stats{-}
 Ett annat paket som, likt de flesta andra paket, faktiskt innehåller flera funktioner är **stats** som innehåller funktioner för statistiska beräkningar med mera. Här är ett par exempel funktioner. **stats** är förinstallerat och igång vid uppstart, så du behöver varken installera det med `install.packages("stats")` eller skriva `library(stats)`.
 
 Ett exempel på funktioner i **stats** är `rnorm()` som genererar slumpmässiga tal från normalfördelningen.
 
 ```{r,collapse=TRUE}
-rnorm(n = 5, mean = 0, sd = 1)
+rnorm(n = 5, mean = 0, sd = 1) # Ger oss fem slumpmässiga nummer från N(0,1)
 ```
 `n`, `mean` och `sd` är stickprovsstorlek, medelvärde och standardavvikelse respektive. De kallas *argument*. Funktionen `rnorm()` har bara dessa tre argument, och de behöver inte skrivas ut. Det vill säga, så länge du håller koll på i vilken ordning argumenten kommer så kan du lika gärna skriva
 
 ```{r,collapse=TRUE}
-rnorm(5,0,1) # Ger oss alltså fem slumpmässiga nummer från N(0,1)
+rnorm(5,0,1) # Samma resultat (men så klart nya tal)
 ```
 
-Ofta har funktionerna ett "default" värde. Det vill säga, ett värde på argumentet om du inte själv specifierar det. I fallet `rnorm()` kan du säkert gissa dig till vilket medelvärde och vilken standardavvikelse som är `default`, nämligen `mean=0` och `sd=1`, det vill säga Z-fördelningen. Stickprovsstorlek har däremot inget `default`, och måste specifieras manuellt.
+Ofta har funktionernas argument ett "default" värde. Det vill säga, ett värde på argumentet om du inte själv specifierar det. I fallet `rnorm()` kan du säkert gissa dig till vilket medelvärde och vilken standardavvikelse som är `default`, nämligen `mean=0` och `sd=1`, det vill säga Z-fördelningen. Stickprovsstorlek har däremot inget `default`, och måste specifieras manuellt.
 
 ```{r, ,collapse=TRUE}
 rnorm(5)
@@ -155,5 +171,64 @@ hist(x,
      xlab = "text på x-axeln",
      main = "Stickprov om 100,000 från N(0,1)")
 ```
+
+
+
+```{r,echo=F}
+skugga <- function(lower.x, upper.x, mu=0, sigma=1,col="grey",density=NULL){
+  step <- (upper.x - lower.x) / 100
+  bounds <- c(mu-3*sigma, mu+3*sigma)
+  cord.x <- c(lower.x,seq(lower.x,upper.x,step),upper.x)
+  cord.y <- c(0,dnorm(seq(lower.x,upper.x,step),mu,sigma),0)
+  curve(dnorm(x,mu,sigma),xlim=bounds,xlab = "z",ylab = "",bty="n",yaxt = "n") 
+  polygon(cord.x,cord.y,col=col,density = density)
+}
+```
+
+En annan funktion vi kommer använda är `pnorm()`. `pnorm()` ger dig arean under en normalfördelningskurva för en given normalfördelning. Säg till exempel att vi har en normalfördelning med medelvärde 0 och standardavvikelse 1, det vill säga $N(0,1)$.
+Med `pnorm()` kan du då hitta $Pr(Z\leq z)$, det vill säga, sannolikheten att ett slumpmässigt valt tal från Z-fördelningen är mindre eller lika med $z$. För $z=0$ skriver du
+
+```{r, collapse=TRUE}
+pnorm(0, mean = 0 , sd=1)
+```
+
+vilket är samma som den skuggade delen nedan
+
+```{r, echo=F}
+skugga(-4,0)
+```
+
+Du kan såklart även hitta arean mellan två punkter genom att subtrahera, precis som du gör när du hittar $Pr(0\leq Z \leq 1)$ för hand.
+
+```{r,collapse=TRUE}
+pnorm(1, mean = 0 , sd=1) - pnorm(0, mean = 0 , sd=1)
+```
+
+Vilket motsvara arean
+
+```{r,echo=F}
+skugga(0,1)
+```
+
+
+Faktum är att **Tabell 5.2A** i formelsamlingen kan återskapas genom att kalla funktionen `pnorm()` på varje tal i sekvensen $0, 0.01, 0.02, 0.03, ... , 3.59$. För at helt återskapa Tabell 5.2A så måste vi också avrunda varje sannolikhet till 4 decimaler med `round()`.
+```{r}
+round(pnorm(seq(0,3.59,by=0.01),mean = 0,sd = 1),4)
+```
+
+Motsvarande funktion för att hitta vilket z-värde som representerar en given sannolikhet (**Tabell 5.2B**) är funktionen `qnorm()`. Tabell 5.2B ger dig vilket Z-värde som har $P$ procent *till höger om sig*, medan `qnorm()` ger dig vilket z-värde som har $P$ procent till *vänster om sig*. Så om vi skriver `-qnorm()` får vi samma resultat som tabellen i formelsamligen. Det vill säga
+
+
+```{r,collapse=TRUE}
+-qnorm(0.025, mean = 0, sd = 1)
+```
+
+Vilket motsvara följande area under Z-fördelningen.
+
+```{r,echo=FALSE}
+skugga(1.959964, 3)
+```
+
+Det vill säga, sannolikheten $2.5 \%$ är associerat med z-värdet $1.959964 \approx 1.96$
 
 

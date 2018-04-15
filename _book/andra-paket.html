@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Lösningar i R (samt lite annat kul)</title>
+  <title>Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</title>
   <meta name="description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8">
   <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta property="og:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="shitoushan/losningar" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta name="twitter:title" content="Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)" />
   
   <meta name="twitter:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
   
@@ -25,7 +25,7 @@
 <meta name="author" content="Erik Stenberg">
 
 
-<meta name="date" content="2018-04-16">
+<meta name="date" content="2018-04-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,7 +114,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="2" data-path="kom-igang.html"><a href="kom-igang.html"><i class="fa fa-check"></i><b>2</b> Kom igång</a><ul>
 <li class="chapter" data-level="2.1" data-path="kom-igang.html"><a href="kom-igang.html#viktiga-funktioner"><i class="fa fa-check"></i><b>2.1</b> Viktiga funktioner</a></li>
-<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a></li>
+<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a><ul>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#gapminder"><i class="fa fa-check"></i>gapminder</a></li>
+<li class="chapter" data-level="" data-path="kom-igang.html"><a href="kom-igang.html#stats"><i class="fa fa-check"></i>stats</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html"><i class="fa fa-check"></i><b>3</b> Övningskompendium Deskriptiv Statistik</a><ul>
 <li class="chapter" data-level="3.1" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#deskription"><i class="fa fa-check"></i><b>3.1</b> Deskription</a><ul>
@@ -149,6 +152,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5" data-path="andra-paket.html"><a href="andra-paket.html"><i class="fa fa-check"></i><b>5</b> Andra paket</a><ul>
 <li class="chapter" data-level="5.1" data-path="andra-paket.html"><a href="andra-paket.html#leaflet"><i class="fa fa-check"></i><b>5.1</b> leaflet</a></li>
 <li class="chapter" data-level="5.2" data-path="andra-paket.html"><a href="andra-paket.html#rtweet"><i class="fa fa-check"></i><b>5.2</b> rtweet</a></li>
+<li class="chapter" data-level="5.3" data-path="andra-paket.html"><a href="andra-paket.html#quantmod"><i class="fa fa-check"></i><b>5.3</b> quantmod</a></li>
+<li class="chapter" data-level="5.4" data-path="andra-paket.html"><a href="andra-paket.html#dplyr"><i class="fa fa-check"></i><b>5.4</b> dplyr</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="andra-paket.html"><a href="andra-paket.html#filter"><i class="fa fa-check"></i><b>5.4.1</b> <code>filter()</code></a></li>
+<li class="chapter" data-level="5.4.2" data-path="andra-paket.html"><a href="andra-paket.html#select"><i class="fa fa-check"></i><b>5.4.2</b> <code>select()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="andra-paket.html"><a href="andra-paket.html#mutate"><i class="fa fa-check"></i><b>5.4.3</b> <code>mutate()</code></a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -159,7 +168,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R (samt lite annat kul)</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R till vissa uppgifter från övningskompendierna (samt lite annat kul)</a>
           </h1>
         </div>
 
@@ -169,7 +178,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="andra-paket" class="section level1">
 <h1><span class="header-section-number">5</span> Andra paket</h1>
-<p>Här tänkte jag visa ett par andra paket som är lätta och roliga att använda.</p>
+<p>Här är en kort introduktion till ett par andra paket som är lätta och roliga att använda.</p>
 <div id="leaflet" class="section level2">
 <h2><span class="header-section-number">5.1</span> leaflet</h2>
 <p>med <strong>leaflet</strong> skapar vi enkelt kartor baserade på Google Maps. Observera här att i paketet <strong>leaflet</strong> finns också en funktion, <code>leaflet()</code>. Vi använder också paketet <strong>ggmap</strong> för att få hitta koordinater för platser, om vi inte vill gå till Google maps och hitta dem. Observera att du kommer behöva installera vissa paket, använd <code>install.packages(&quot;paketets namn&quot;)</code></p>
@@ -177,10 +186,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## Loading required package: ggplot2
 ggmap<span class="op">::</span><span class="kw">geocode</span>(<span class="st">&quot;ekonomikum&quot;</span>)
 ## Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=ekonomikum&amp;sensor=false
-## Warning: geocode failed with status OVER_QUERY_LIMIT, location =
-## &quot;ekonomikum&quot;
-##   lon lat
-## 1  NA  NA</code></pre></div>
+##        lon      lat
+## 1 17.61982 59.85945</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(leaflet)
 
 m &lt;-<span class="st"> </span><span class="kw">leaflet</span>() <span class="co"># Funktionen leaflet</span>
@@ -190,23 +197,182 @@ m &lt;-<span class="st"> </span><span class="kw">addMarkers</span>(m,
                 <span class="dt">lat=</span><span class="fl">59.85945</span>,
                 <span class="dt">popup=</span><span class="st">&quot;Ekonomikum&quot;</span>)
 m</code></pre></div>
-<div id="htmlwidget-f96ee70c60a6277e72f6" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f96ee70c60a6277e72f6">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[59.85945,17.61982,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Ekonomikum",null,null,null,null,null,null]}],"limits":{"lat":[59.85945,59.85945],"lng":[17.61982,17.61982]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a8aae4bc99e64beae6f4" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a8aae4bc99e64beae6f4">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[59.85945,17.61982,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Ekonomikum",null,null,null,null,null,null]}],"limits":{"lat":[59.85945,59.85945],"lng":[17.61982,17.61982]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="rtweet" class="section level2">
 <h2><span class="header-section-number">5.2</span> rtweet</h2>
 <p>med <strong>rtweet</strong> laddar vi ner data på tweets från valfria hashtags eller användare. Vi får användarens profil, följare, antal retweets och mycket mer.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;rtweet&quot;</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtweet)
 tweets &lt;-<span class="st"> </span><span class="kw">search_tweets</span>(<span class="st">&quot;#svpol&quot;</span>, <span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">include_rts =</span> <span class="ot">FALSE</span>)
 ## Searching for tweets...
 ## Finished collecting tweets!
 tweets<span class="op">$</span>text[<span class="dv">1</span>]
-## [1] &quot;#svpol #eupol #uspol #StockholmGenderForum #Gräv18 #UnitedNations Ping @amihedenborg @deeped @jamilaraqib @AMKlasing @Kvinna_t_Kvinna @BillFrelick @AnnaLindenfors @sunderland_jude @AEDH_EU @RunMargaux @RSF_RUG @gebauerspon @schultchristoph @leclercjm https://t.co/zSQFp8fJNG&quot;
+## [1] &quot;Förslag från regeringen #svpol \&quot;En ny paketreselag – ett starkare resenärsskydd\&quot; https://t.co/AHgJ73aPEI Proposition 2017/18:225 \n  \nEn ny paketreselag ett starkare resenärsskydd En ny paketreselag ett starkare resenärsskydd&quot;
 tweets<span class="op">$</span>profile_image_url[<span class="dv">1</span>]
-## [1] &quot;http://pbs.twimg.com/profile_images/818767347188174848/ie0RZisv_normal.jpg&quot;</code></pre></div>
-<p><img src="http://pbs.twimg.com/profile_images/818767347188174848/ie0RZisv_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/934521054202122242/iCKel3db_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/949331848093724672/Qvspwx4C_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/885980611323850752/51eS8jD7_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/818767347188174848/ie0RZisv_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/976060389279567873/rDxkaOZM_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/934521054202122242/iCKel3db_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/967321665138053120/tVcezOD5_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/984659324848001025/L-qwXvq6_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/934521054202122242/iCKel3db_normal.jpg" /></p>
+## [1] &quot;http://pbs.twimg.com/profile_images/956116979139710977/ifQSMeEv_normal.jpg&quot;</code></pre></div>
+<p><img src="http://pbs.twimg.com/profile_images/956116979139710977/ifQSMeEv_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/956116979139710977/ifQSMeEv_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/674152488010928129/PmCIxtt0_normal.png" /> <img src="http://pbs.twimg.com/profile_images/979126203507511297/FIfpd4Z-_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/471937853673336833/pd-ml_ru_normal.png" /> <img src="http://pbs.twimg.com/profile_images/986539256595218432/CuzOPBl6_normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/975031630845939712/ngtCZ2W__normal.jpg" /> <img src="http://pbs.twimg.com/profile_images/456321010568945664/XFYkmcpI_normal.jpeg" /> <img src="http://pbs.twimg.com/profile_images/454561789447921666/udw8S1Q-_normal.jpeg" /> <img src="http://pbs.twimg.com/profile_images/915115993256615938/bgArAtZQ_normal.jpg" /></p>
+</div>
+<div id="quantmod" class="section level2">
+<h2><span class="header-section-number">5.3</span> quantmod</h2>
+<p>Paket-författarna själva beskriver quantmod som ett “Quantitative Financial Modelling and Trading Framework for R”. Det finns en mängd funktioner, med här demonstrerar jag hur du kan ladda ner data från enskilda aktier eller börsindex. Du behöver registrera dig på <a href="https://www.tiingo.com/">tiingo.com</a> för att få en API-nyckel. Efter registrering, logga in och gå till</p>
+<p><code>API&gt;Documentation&gt;2.2.1 Daily Prices</code></p>
+<p>En bit ner på sidan hittar du din API-nyckel</p>
+<p><img src="images/2.jpg" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">key &lt;-<span class="st"> &quot;...............&quot;</span> <span class="co"># Byt ut .... mot din nyckel</span></code></pre></div>
+<p>Vi kan exempelvis ladda ner data Facebooks aktie, använd funktionen <code>getSymbols()</code>, argumentet <code>src</code> är varifrån vi hämtar data, <code>api.key</code> är helt enkelt din API-nyckel. Data kommer sparas som ett objekt <code>FB</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
+<span class="kw">getSymbols</span>(<span class="st">&quot;FB&quot;</span>, <span class="dt">src =</span> <span class="st">&quot;tiingo&quot;</span>,<span class="dt">api.key =</span> key) 
+## [1] &quot;FB&quot;
+?getSymbols</code></pre></div>
+<p>Vi kan inspektera de fem senaste dagarna med <code>tail()</code>…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(FB, <span class="dv">5</span>)
+##             FB.Open  FB.High FB.Low FB.Close FB.Volume
+## 2018-04-12 166.9800 167.4500 163.10   163.87  38262956
+## 2018-04-13 164.5800 165.7036 163.77   164.52  19990561
+## 2018-04-16 165.7249 165.7800 163.39   164.83  18119435
+## 2018-04-17 165.8300 169.0000 165.66   168.66  22743029
+## 2018-04-18 166.8800 168.1200 165.77   166.36  20969568</code></pre></div>
+<p>…och skapa en tidsserieplot med <code>plot()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(FB<span class="op">$</span>FB.Close,<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p>Det är mycket som pågår <em>under the hood</em> här. Till exempel: hur vet funktionen <code>plot()</code> vad för sorts graf den ska rita, och var den ska leta efter tiden (som visas på x-axeln)? Går man in på djupet blir det snabbt väldigt komplicerat, och vi lämnar såldes denna diskussion tills vidare.</p>
+</div>
+<div id="dplyr" class="section level2">
+<h2><span class="header-section-number">5.4</span> dplyr</h2>
+<p>Här kommer jag introducera paketet <strong>dplyr</strong> som är ett fantastiskt intuitivt sätt att manipulera data. Först måste du i vanlig ordning installera paketet med <code>install.packages()</code>. Glöm inte citationstecken. Sedan</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)</code></pre></div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD I dplyr finns <code>%&gt;%</code>. Med <code>%&gt;%</code> (som kallas the pipe operator) behöver vi inte skriva det första argumentet i en funktion inuti själva funktionen. Det är mycket enklare att förstå med ett exempel. Notera hur dessa två funktioner (som avrundar <code>x</code> till en decimal) producerar samma resultat</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.109</span>, <span class="fl">0.359</span>, <span class="fl">0.63</span>, <span class="fl">0.996</span>, <span class="fl">0.515</span>, <span class="fl">0.142</span>, <span class="fl">0.017</span>, <span class="fl">0.829</span>, <span class="fl">0.907</span>)
+<span class="kw">round</span>(x,<span class="dv">1</span>)
+## [1] 0.1 0.4 0.6 1.0 0.5 0.1 0.0 0.8 0.9
+x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dv">1</span>)
+## [1] 0.1 0.4 0.6 1.0 0.5 0.1 0.0 0.8 0.9</code></pre></div>
+<p>I detta fallet går det så klart snabbare att bara skriva <code>round(x,1)</code>, men när du applicerar många funktioner på <code>x</code> så skall du snart se att du kan skriva mycket mer intuitiv kod med <code>%&gt;%</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">exp</span>(<span class="kw">diff</span>(<span class="kw">log</span>(x))), <span class="dv">1</span>)
+## [1]  3.3  1.8  1.6  0.5  0.3  0.1 48.8  1.1
+x <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">log</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">diff</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">exp</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dv">1</span>)
+## [1]  3.3  1.8  1.6  0.5  0.3  0.1 48.8  1.1</code></pre></div>
+<p>Framför allt är som sagt <strong>dplyr</strong> bra för datamanipulering. Den innehåller en rad bra funkltioner som jag demonstrerar nedan med hjälp av ett data set vi redan är bekanta med, <code>gapminder</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(gapminder)
+gapminder</code></pre></div>
+<pre><code>## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # ... with 1,694 more rows</code></pre>
+<div id="filter" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> <code>filter()</code></h3>
+<p>Som du ser så har <code>gapminder</code> 6 kolumner och 1704 rader. Vi börjar med funktionen <code>filter()</code> som väljer observationer baserat på deras <em>värden</em>. Säg att vi är intresserade av data där landet är Sverige.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(country<span class="op">==</span><span class="st">&quot;Sweden&quot;</span>)</code></pre></div>
+<pre><code>## # A tibble: 12 x 6
+##    country continent  year lifeExp     pop gdpPercap
+##    &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
+##  1 Sweden  Europe     1952    71.9 7124673     8528.
+##  2 Sweden  Europe     1957    72.5 7363802     9912.
+##  3 Sweden  Europe     1962    73.4 7561588    12329.
+##  4 Sweden  Europe     1967    74.2 7867931    15258.
+##  5 Sweden  Europe     1972    74.7 8122293    17832.
+##  6 Sweden  Europe     1977    75.4 8251648    18856.
+##  7 Sweden  Europe     1982    76.4 8325260    20667.
+##  8 Sweden  Europe     1987    77.2 8421403    23587.
+##  9 Sweden  Europe     1992    78.2 8718867    23880.
+## 10 Sweden  Europe     1997    79.4 8897619    25267.
+## 11 Sweden  Europe     2002    80.0 8954175    29342.
+## 12 Sweden  Europe     2007    80.9 9031088    33860.</code></pre>
+<p>I stället för 1704 rader har vi nu bara 12, det vill säga alla värden där kolumnen <code>country</code> är lika med Sverige (<code>&quot;Sverige&quot;</code>).</p>
+</div>
+<div id="select" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> <code>select()</code></h3>
+<p>Med select väljer vi helt enkelt kolumner baserat på deras namn. Vi har i vårt data set som sagt 6 kolumner, säg att vi är intresserade av endast en kolumn, nämligen den kolumn som heter <code>country</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(country)</code></pre></div>
+<pre><code>## # A tibble: 1,704 x 1
+##    country    
+##    &lt;fct&gt;      
+##  1 Afghanistan
+##  2 Afghanistan
+##  3 Afghanistan
+##  4 Afghanistan
+##  5 Afghanistan
+##  6 Afghanistan
+##  7 Afghanistan
+##  8 Afghanistan
+##  9 Afghanistan
+## 10 Afghanistan
+## # ... with 1,694 more rows</code></pre>
+<p>I sann <code>%&gt;%</code>-anda kan vi självklart kombinera funktionerna. Säg att vi är intresserade av data på Sverige, och vi bara vill ha två kolumner: år och förväntad livslängd</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(country<span class="op">==</span><span class="st">&quot;Sweden&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(year, lifeExp)</code></pre></div>
+<pre><code>## # A tibble: 12 x 2
+##     year lifeExp
+##    &lt;int&gt;   &lt;dbl&gt;
+##  1  1952    71.9
+##  2  1957    72.5
+##  3  1962    73.4
+##  4  1967    74.2
+##  5  1972    74.7
+##  6  1977    75.4
+##  7  1982    76.4
+##  8  1987    77.2
+##  9  1992    78.2
+## 10  1997    79.4
+## 11  2002    80.0
+## 12  2007    80.9</code></pre>
+<p>I första steget väljer vi alla rader där <code>country</code> är lika med <code>&quot;Sverige&quot;</code> och i andra steget väljer vi kolumnerna som heter <code>year</code> och <code>lifeExp</code>.</p>
+</div>
+<div id="mutate" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> <code>mutate()</code></h3>
+<p>med <code>mutate()</code> skapar vi nya kolumner baserat på befintliga kolumner. Det vill säga, vi applicerar en funktion på en eller flera befintliga kolumner och skapar en ny. Vi har BNP per capita och vi har population, så vi skulle kunna skapa en ny kolumn, <code>gdp</code>, genom att multiplicera gdp per capita med population, i.e. <code>gdpPercap*pop</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gapminder <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">gdp =</span> gdpPercap<span class="op">*</span>pop)</code></pre></div>
+<pre><code>## # A tibble: 1,704 x 7
+##    country     continent  year lifeExp      pop gdpPercap          gdp
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.  6567086330.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.  7585448670.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.  8758855797.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.  9648014150.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.  9678553274.
+##  6 Afghanistan Asia       1977    38.4 14880372      786. 11697659231.
+##  7 Afghanistan Asia       1982    39.9 12881816      978. 12598563401.
+##  8 Afghanistan Asia       1987    40.8 13867957      852. 11820990309.
+##  9 Afghanistan Asia       1992    41.7 16317921      649. 10595901589.
+## 10 Afghanistan Asia       1997    41.8 22227415      635. 14121995875.
+## # ... with 1,694 more rows</code></pre>
+<p>======= ## quantmod</p>
+<p>Paket-författaren själv beskriver quantmod som ett “Quantitative Financial Modelling and Trading Framework for R”. Det finns en mängd funktioner, med här demonstrerar jag hur du kan ladda ner data från enskilda aktier eller börsindex. Du behöver registrera dig på <a href="https://www.tiingo.com/">tiingo.com</a> för att få en API-nyckel. Efter registrering, logga in och gå till &gt;&gt;&gt;&gt;&gt;&gt;&gt; 479becfa4be46b3c6477c3cec0bb402c7872d369</p>
+<p><code>API&gt;Documentation&gt;2.2.1 Daily Prices</code></p>
+<p>En bit ner på sidan hittar du din API-nyckel</p>
+<p><img src="images/2.jpg" /><!-- --></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">key &lt;-<span class="st"> &quot;...............&quot;</span> <span class="co"># Byt ut .... mot din nyckel</span></code></pre></div>
+<p>Vi kan exempelvis ladda ner data Facebooks aktie, använd funktionen <code>getSymbols()</code>, argumentet <code>src</code> är varifrån vi hämtar data, <code>api.key</code> är helt enkelt din API-nyckel. Data kommer sparas som ett objekt <code>FB</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(quantmod)
+<span class="kw">getSymbols</span>(<span class="st">&quot;FB&quot;</span>, <span class="dt">src =</span> <span class="st">&quot;tiingo&quot;</span>,<span class="dt">api.key =</span> key) 
+## [1] &quot;FB&quot;
+?getSymbols</code></pre></div>
+<p>Vi kan inspektera de fem senaste dagarna med <code>tail()</code>…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(FB, <span class="dv">5</span>)
+##             FB.Open  FB.High FB.Low FB.Close FB.Volume
+## 2018-04-12 166.9800 167.4500 163.10   163.87  38262956
+## 2018-04-13 164.5800 165.7036 163.77   164.52  19990561
+## 2018-04-16 165.7249 165.7800 163.39   164.83  18119435
+## 2018-04-17 165.8300 169.0000 165.66   168.66  22743029
+## 2018-04-18 166.8800 168.1200 165.77   166.36  20969568</code></pre></div>
+<p>…och skapa en tidsserieplot med <code>plot()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(FB<span class="op">$</span>FB.Close,<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
 
+</div>
 </div>
 </div>
             </section>
