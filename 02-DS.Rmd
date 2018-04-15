@@ -1,0 +1,242 @@
+# Övningskompendium Deskriptiv Statistik
+
+## Deskription
+### Uppgift 16 {-}
+
+```{r}
+betyg <- c(1, 4, 4, 3, 2, 3, 3, 3, 5,
+           2, 3, 3, 3, 2, 4, 4, 3, 1,
+           2, 5, 3, 3, 4, 2, 3, 4, 2, 3)
+```
+
+```{r, collapse=TRUE}
+mean(betyg)
+median(betyg)
+```
+Det finns faktiskt ingen inbyggd funktion i R för typ-värde(!), men vi kan använda `table()` för att hitta vad vi söker. 3 förekommer 12 gånger.
+
+```{r,collapse=TRUE}
+table(betyg)
+```
+
+```{r,collapse=TRUE}
+x <- table(betyg)
+barplot(x)
+```
+
+
+### Uppigift 17 {-}
+
+```{r, collapse=TRUE}
+husdjur <- c(rep(0,20), rep(1,15), rep(2,10), rep(3,5))
+mean(husdjur)
+median(husdjur)
+```
+
+```{r}
+x <- table(husdjur)
+plot(cumsum(x),                      # cumsum för cumulative sum
+     type = "S",                     # "S" för "steps"
+     xlim = c(0,4),                  # Undre och övre gräns för x
+     ylim = c(0,50),                 # Undre och övre gräns för y
+     xlab = "Antal Husdjur" ,        # Text på x-axeln
+     ylab = "Summa Antal Familjer")  # Text på y-axeln
+
+segments(x0 = 0, y0 = 0, x1 = 0, y1 = 20)
+segments(x0 = 0, y0 = 20, x1 = 1, y1 = 20)
+segments(x0 = 0, y0 = 25,x1 = 1, y1 = 25,col = "red",lwd=2,lty = 6)
+arrows(x0 = 1,y0 = 25,x1 = 1,y1 = 0, col = "red",lwd=2, lty = 6)
+```
+
+
+
+### Uppgift 18 {-}
+```{r,collapse=TRUE}
+löner <- c(341000, 193000, 167000, 167000, 156000,
+           154000, 148000, 148000, 148000, 148000)
+
+mean(löner)
+median(löner)
+table(löner)
+
+barplot(table(löner)) # Sned fördelning -> använd median
+```
+
+
+### Uppgift 21 {-}
+Vi har följande tabell
+
+```{r,echo=FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+ofall <- c(rep(0,21),rep(1,18),rep(3,7),rep(3,3),rep(4,1))
+ofall <- table(ofall)
+knitr::kable(ofall, booktabs=T, col.names = c("Antal Olycksfall per dag", "Frekvens"))
+```
+
+Givetvis kan vi skapa vektorn och använda `mean()`och `sd()`
+```{r,collapse=TRUE}
+tabell <- c(rep(0,21),rep(1,18),rep(2,7),rep(3,3),rep(4,1))
+mean(tabell)
+var(tabell)
+```
+
+Men säg att vi hade fått en stor dataframe, och det hade varit för mycket jobb för att skriva en massa `rep()`. Det vill säga, säg att någon gav oss `df` nedan
+
+```{r}
+df <- as.data.frame(cbind(c(0,1,2,3,4),c(21,18,7,3,1)))
+colnames(df) <- c("olycksfall", "frekvens")
+df
+```
+Istället för att återskapa `tabell` ovan (som förvisso är väldigt enkelt - bara använd `table()`),
+så kan vi gå den långa vägen och använda.
+
+$$\bar{x} = \frac{\sum{f_i x_i}}{n}$$  
+$$s^2 = \frac{\sum{f_i x_i^2}-\frac{\sum{(f_i x_i)}^2}{n}}{n-1}$$
+
+```{r, collapse=TRUE}
+n <- sum(df$frekvens)
+f = df$frekvens
+x = df$olycksfall
+
+medelvärde = sum(f*x)/n
+varians = (sum(f*x^2) - sum((f*x))^2/n)  / (n-1)
+
+medelvärde
+varians
+```
+
+
+## Spridningsdiagram och Korrelation
+
+### Uppgift 101 {-}
+
+```{r}
+x <- as.data.frame(cbind(c(5500,6000,6500,6000,5000,6500,4500,5000),
+                         c(41,38,35,40,44,38,45,42)))
+colnames(x) <- c("Pris","Försäljning")
+```
+
+Vilket ger oss följande dataframe
+
+```{r}
+head(x)
+```
+
+
+Korrelationsmatris
+```{r,collapse=TRUE}
+cor(x)
+```
+
+Notera att vi egentligen inte behöver skriva `type="p"` i `plot()` nedan, eftersom detta är default när man använder funktionen på objekt som `x`. 
+
+```{r}
+plot(x, type= "p" ,
+     xlab = "Pris (kr)",
+     ylab = "Försäljning (antal)",
+     pch=16)  # För at få prickarna ifyllda
+```
+
+*Gör precis samma sak för uppgift 102*
+
+
+### Uppgift 105 {-}
+
+```{r}
+dat <- cbind.data.frame(1:12,
+                           c(3,4,6,2,5,6,5,4,7,6,5,4),
+                           c(14,23,25,17,30,44,35,34,39,32,38,29),
+                           c(23,30,29,26,35,58,30,50,55,45,44,34))
+
+colnames(dat) <- c("person","X","Y","Z")
+
+Z <- dat$Z
+Y <- dat$Y
+
+```
+Såhär ser vår dataframe ut
+```{r,collapse=TRUE}
+head(dat)
+```
+
+Korrelationsmatris igen
+
+```{r, collapse=TRUE}
+cor(dat)
+```
+Vi ser att Y verkar ha högst korrelation med X, ungefär $0.74$.
+
+Linjär regression i R är enkelt. I funktionen `lm()` anger du vilken data du vill använda, i vårt fall `data = dat`, formulan skrivs på formen `formula = y~z`. Ett intercept skattas per default, men kan undvikas genom att skriva `-1` i formulan, i.e `y~x-1`.
+```{r}
+lm(Y ~ Z, dat)
+```
+
+```{r}
+plot(Z, Y, pch=16)
+abline(lm(Y ~ Z, dat), col="red")
+```
+
+
+### Uppgift 107 {-}
+Förbered data
+```{r}
+res <- cbind.data.frame(c("A","B","C","D","E","F"),
+                           c(11.2, 11.4, 10.8, 10.9, 11.0 , 11.3),
+                           c(676, 660, 685, 670, 690, 669))
+
+colnames(res) <- c("pers","löp","hopp")
+```
+Beräkningar
+```{r}
+cor(res$löp,res$hopp)
+
+summary(res$löp)
+summary(res$hopp)
+
+y <- res$löp
+x <- res$hopp
+
+plot(x,y,
+     xlim = c(650,700),
+     ylim = c(10,12),
+     pch = 16,
+     ylab = "Löp (sek)",
+     xlab = "Hopp (cm)")
+```
+
+## Tidsserier
+
+### Uppgift 401 {-}
+
+```{r,collapse=TRUE}
+y <-c(0.175, 0.249, 0.279, 0.376, 0.528, 0.781, 1.123, 1.681, 3.131)
+t <- 1970:1978 - 1974
+
+lm(y~t)
+```
+
+### Uppgift 402 {-}
+
+```{r}
+y <-c(0.175, 0.249, 0.279, 0.376, 0.528, 0.781, 1.123, 1.681, 3.131)
+
+y <- ts(y,
+        start = 1970,
+        end = 1978,
+        frequency = 1)
+
+plot.ts(y)
+```
+
+Vi försöker igen med en expoentiell trend.
+
+```{r,collapse=FALSE}
+y_prime = log(y,base = 10)
+lm(y_prime~t)
+```
+För att få tillbaka vårt önskade resulat (se lösningarna för detaljer) så löser vi
+```{r,collapse=FALSE}
+m <- lm(y_prime~t)
+10^m$coefficients
+```
+
+

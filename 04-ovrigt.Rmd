@@ -1,0 +1,61 @@
+
+# Andra paket
+Här tänkte jag visa ett par andra paket som är lätta och roliga att använda.
+
+
+## leaflet
+
+med **leaflet** skapar vi enkelt kartor baserade på Google Maps. Observera här att i paketet **leaflet** finns också en funktion, `leaflet()`. Vi använder också paketet **ggmap** för att få hitta koordinater för platser, om vi inte vill gå till Google maps och hitta dem. Observera att du kommer behöva installera vissa paket, använd `install.packages("paketets namn")`
+
+```{r,collapse=TRUE}
+library(ggmap)
+ggmap::geocode("ekonomikum")
+```
+
+
+```{r,collapse=TRUE}
+library(leaflet)
+
+m <- leaflet() # Funktionen leaflet
+m <- addTiles(m)
+m <- addMarkers(m,
+                lng=17.61982,
+                lat=59.85945,
+                popup="Ekonomikum")
+m
+```
+
+## rtweet
+med **rtweet** laddar vi ner data på tweets från valfria hashtags eller användare. Vi får användarens profil, följare, antal retweets och mycket mer.
+
+```{r,eval=FALSE}
+install.packages("rtweet")
+```
+```{r,collapse=TRUE}
+library(rtweet)
+tweets <- search_tweets("#svpol", n = 10, include_rts = FALSE)
+tweets$text[1]
+tweets$profile_image_url[1]
+```
+
+![](`r tweets$profile_image_url[1]`)
+![](`r tweets$profile_image_url[2]`)
+![](`r tweets$profile_image_url[3]`)
+![](`r tweets$profile_image_url[4]`)
+![](`r tweets$profile_image_url[5]`)
+![](`r tweets$profile_image_url[6]`)
+![](`r tweets$profile_image_url[7]`)
+![](`r tweets$profile_image_url[8]`)
+![](`r tweets$profile_image_url[9]`)
+![](`r tweets$profile_image_url[10]`)
+
+
+
+
+
+
+
+
+
+
+

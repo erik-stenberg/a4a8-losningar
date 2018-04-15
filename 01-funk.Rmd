@@ -1,0 +1,159 @@
+
+# Kom igång
+
+## Viktiga funktioner
+Jag förutsätter att du har R och RStudio installerat (eller sitter vid någon av datorerna statistik-labbarna). Som tidigare nämnts så kommer detta inte vara någon genomgående guide till R, men det finns ett par saker som är viktiga att nämna innan vi kör igång.
+
+
+
+
+Skriver du `1+1` så kommer R ge dig `2`. 
+
+```{r, collapse=TRUE}
+1+1
+
+```
+
+Du kan också skapa ett objekt med `<-` som kallas the assign operator.
+
+```{r,collapse=TRUE}
+x <- 1+1
+```
+
+Notera att R inte kommer skriva ut vad `x` är förrän du ber om det
+
+```{r,collapse=TRUE}
+x
+```
+
+
+I detta dokument kommer resultat från R alltid föregås av `##`. Det är så du kan se skillnad på vad jag skriver och vad R ger tillbaka. Ibland kommer du även se enskilda `#` i koden. Allting som skrivs efter `#` behandlas av R som icke-kod. Det vill säga, jag kommer ofta använda `# kommentar` i koden för att förtydliga någonting jag gör.
+
+Vektorer är den absolut vanligaste datatypen i R, och du kommer vid flera tillfällen behöva skapa vektorer. Ofta skapar vi vektorer med funktionen `c()`. För att se om ett objekt är en vektor använder du med framgång `is.vector`.
+
+```{r,collapse=TRUE}
+x <- c(1,5,7,2,4,6,7)
+is.vector(x)
+```
+I detta fallet är `x` alltså en numerisk vektor, men det finns andra sorter.
+
+```{r, collapse=TRUE}
+y <- c("R","är","kul")
+is.vector(y)
+is.numeric(y)
+is.character(y)
+```
+`y` är alltså en character vector. Dessa objekt kommer i vårt fall ofta vara stickprov. Låt säga att vi har frågat några personer om deras längd. 
+
+```{r}
+stickprov <- c(170, 165, 151, 191, 180, 172, 181, 166, 155,
+               194, 166, 175, 144, 188, 192, 164, 178, 201)
+```
+
+Vi kan enkelt hitta stickprovsstorlek, medelvärde, standardavvikelse och skapa ett histogram
+
+```{r, collapse=TRUE}
+length(stickprov) # stickprovsstorlek
+mean(stickprov)   # medelvärde
+sd(stickprov)     # standardavvikelse
+
+hist(stickprov)
+```
+
+Låt säga att jag har två vektorer, en med namn på universitet och en med antal studenter (enligt wikipedia). Men jag vill ha dem i samma objekt. Då skapar jag med fördel en såkallad dataframe. 
+
+```{r,collapse=TRUE}
+
+namn <- c("UU", "KTH", "SU", "LU")
+studenter <- c(24623, 12000, 29087, 40000)
+z <- cbind.data.frame(namn,studenter)
+
+is.vector(z)     # z är inte längre en vektor
+is.data.frame(z) # z är en data frame
+```
+
+Så hur ser `z` ut?
+
+```{r,collapse=TRUE}
+z
+```
+
+För att "komma åt" data från en dataframe kan jag använda `$`.
+
+```{r,collapse=TRUE}
+z$studenter
+```
+
+Eftersom `z$studenter` är en numerisk vektor kan jag göra precis samma sak på `z$studenter` som jag kunde göra på stickprovet ovan.
+
+```{r,collapse=TRUE}
+mean(z$studenter)
+sd(z$studenter)
+```
+Skulle jag försöka göra samma sak på `z$namn` får jag en varning och resultatet blir `NA`. Jag kan naturligtvis inte räkna ut medelvärdet av fyra namn.
+
+```{r,collapse=TRUE}
+mean(z$namn)
+```
+
+
+## Funktioner och paket
+En sak som är bra med RStudio är att det finns väldigt bra dokumentation utan att du behöver gå till din webbläsare. Om du undrar hur en funktion fungerar så räcker det ofta med att skriva ett frågetecken följt av funktionens namn, ex: `?mean`, och en hjälp-sida visas i din "viewer pane" till höger.  Längst ner på hjälp-sidan finns ofta enkla exempel.
+
+Många funktioner i R kommer från externa *paket*. Vissa av dem är otroligt enkla att använda, andra tar lång tid att lära sig. Vem som helst kan skriva ett paket, och de är enkla att installera. Det finns otroligt många paket, och användningsområdena är nästan lika många. För att demonstrera hur installation av ett paket går till kan vi titta på ett paket som heter **gapminder**, som innehåller data tillänglig på [Gapminder.org](https://www.gapminder.org/).
+
+Första gången du använder ett paket behöver du installera det. Det gör du genom att skriva
+```{r,eval=F}
+install.packages("gapminder")
+```
+Observera citationstecken. Detta behöver du bara göra en gång på din dator. När du vill använda paketet i framtiden måste du, varje gång du öppnar RStudio, skriva
+
+```{r,eval=TRUE}
+library(gapminder)
+```
+
+Paketet **gapminder** är ett litet paket och innehåller inga funktioner, bara dataset. Ett av dataseten heter `gapminder` och innehåller data på bland annat förväntad linvslängd, population, BNP etc. Du laddar ner datan genom att helt enkelt skriva
+
+```{r}
+gapminder
+```
+
+
+Ett annat paket som, likt de flesta andra paket, faktiskt innehåller flera funktioner är **stats** som innehåller funktioner för statistiska beräkningar med mera. Här är ett par exempel funktioner. **stats** är förinstallerat och igång vid uppstart, så du behöver varken installera det med `install.packages("stats")` eller skriva `library(stats)`.
+
+Ett exempel på funktioner i **stats** är `rnorm()` som genererar slumpmässiga tal från normalfördelningen.
+
+```{r,collapse=TRUE}
+rnorm(n = 5, mean = 0, sd = 1)
+```
+`n`, `mean` och `sd` är stickprovsstorlek, medelvärde och standardavvikelse respektive. De kallas *argument*. Funktionen `rnorm()` har bara dessa tre argument, och de behöver inte skrivas ut. Det vill säga, så länge du håller koll på i vilken ordning argumenten kommer så kan du lika gärna skriva
+
+```{r,collapse=TRUE}
+rnorm(5,0,1) # Ger oss alltså fem slumpmässiga nummer från N(0,1)
+```
+
+Ofta har funktionerna ett "default" värde. Det vill säga, ett värde på argumentet om du inte själv specifierar det. I fallet `rnorm()` kan du säkert gissa dig till vilket medelvärde och vilken standardavvikelse som är `default`, nämligen `mean=0` och `sd=1`, det vill säga Z-fördelningen. Stickprovsstorlek har däremot inget `default`, och måste specifieras manuellt.
+
+```{r, ,collapse=TRUE}
+rnorm(5)
+```
+
+Låt oss ta ett större stickprov, spara resultatet som `x` och skapa ett histogram, med funktionen `hist()`.
+
+```{r}
+x <- rnorm(100000)
+hist(x)
+```
+
+Lek runt lite med de olika argumenten. För en full lista med alla argument, titta på hjälpsidan genom `?hist`
+
+```{r}
+hist(x,
+     breaks = 100,
+     col = "pink",
+     ylab = "text på y-axeln",
+     xlab = "text på x-axeln",
+     main = "Stickprov om 100,000 från N(0,1)")
+```
+
+
