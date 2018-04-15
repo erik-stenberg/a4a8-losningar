@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Lösningar i R (samt lite annat kul)</title>
+  <meta name="description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
+  <meta name="github-repo" content="shitoushan/losningar" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lösningar i R (samt lite annat kul)" />
+  
+  <meta name="twitter:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
+  
+
+<meta name="author" content="Erik Stenberg">
+
+
+<meta name="date" content="2018-04-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="kom-igang.html">
+<link rel="next" href="ovningskompendium-sannolikhetslara-och-inferens.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<link href="libs/leaflet-0.7.7/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-0.7.7/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<link href="libs/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet" />
+<script src="libs/leaflet-label-0.2.2/leaflet.label.js"></script>
+<script src="libs/Proj4Leaflet-0.7.2/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-0.7.2/proj4leaflet.js"></script>
+<script src="libs/leaflet-binding-1.1.0/leaflet.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivering"><i class="fa fa-check"></i><b>1.1</b> Motivering</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#varfor-r"><i class="fa fa-check"></i><b>1.2</b> Varför R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="kom-igang.html"><a href="kom-igang.html"><i class="fa fa-check"></i><b>2</b> Kom igång</a><ul>
+<li class="chapter" data-level="2.1" data-path="kom-igang.html"><a href="kom-igang.html#viktiga-funktioner"><i class="fa fa-check"></i><b>2.1</b> Viktiga funktioner</a></li>
+<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html"><i class="fa fa-check"></i><b>3</b> Övningskompendium Deskriptiv Statistik</a><ul>
+<li class="chapter" data-level="3.1" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#deskription"><i class="fa fa-check"></i><b>3.1</b> Deskription</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-16"><i class="fa fa-check"></i>Uppgift 16</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppigift-17"><i class="fa fa-check"></i>Uppigift 17</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-18"><i class="fa fa-check"></i>Uppgift 18</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-21"><i class="fa fa-check"></i>Uppgift 21</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#spridningsdiagram-och-korrelation"><i class="fa fa-check"></i><b>3.2</b> Spridningsdiagram och Korrelation</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-101"><i class="fa fa-check"></i>Uppgift 101</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-105"><i class="fa fa-check"></i>Uppgift 105</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-107"><i class="fa fa-check"></i>Uppgift 107</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#tidsserier"><i class="fa fa-check"></i><b>3.3</b> Tidsserier</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-401"><i class="fa fa-check"></i>Uppgift 401</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-402"><i class="fa fa-check"></i>Uppgift 402</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html"><i class="fa fa-check"></i><b>4</b> Övningskompendium Sannolikhetslära och Inferens</a><ul>
+<li class="chapter" data-level="4.1" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#sannolikhetslara"><i class="fa fa-check"></i><b>4.1</b> Sannolikhetslära</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-5"><i class="fa fa-check"></i>Uppgift 5</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-28"><i class="fa fa-check"></i>Uppgift 28</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-39"><i class="fa fa-check"></i>Uppgift 39</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-40"><i class="fa fa-check"></i>Uppgift 40</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-42"><i class="fa fa-check"></i>Uppgift 42</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#statistisk-inferens"><i class="fa fa-check"></i><b>4.2</b> Statistisk Inferens</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-11"><i class="fa fa-check"></i>Uppgift 11</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-17"><i class="fa fa-check"></i>Uppgift 17</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="andra-paket.html"><a href="andra-paket.html"><i class="fa fa-check"></i><b>5</b> Andra paket</a><ul>
+<li class="chapter" data-level="5.1" data-path="andra-paket.html"><a href="andra-paket.html#leaflet"><i class="fa fa-check"></i><b>5.1</b> leaflet</a></li>
+<li class="chapter" data-level="5.2" data-path="andra-paket.html"><a href="andra-paket.html#rtweet"><i class="fa fa-check"></i><b>5.2</b> rtweet</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R (samt lite annat kul)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ovningskompendium-deskriptiv-statistik" class="section level1">
+<h1><span class="header-section-number">3</span> Övningskompendium Deskriptiv Statistik</h1>
+<div id="deskription" class="section level2">
+<h2><span class="header-section-number">3.1</span> Deskription</h2>
+<div id="uppgift-16" class="section level3 unnumbered">
+<h3>Uppgift 16</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">betyg &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>,
+           <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>,
+           <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(betyg)
+## [1] 3
+<span class="kw">median</span>(betyg)
+## [1] 3</code></pre></div>
+<p>Det finns faktiskt ingen inbyggd funktion i R för typ-värde(!), men vi kan använda <code>table()</code> för att hitta vad vi söker. 3 förekommer 12 gånger.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(betyg)
+## betyg
+##  1  2  3  4  5 
+##  2  6 12  6  2</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">table</span>(betyg)
+<span class="kw">barplot</span>(x)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+</div>
+<div id="uppigift-17" class="section level3 unnumbered">
+<h3>Uppigift 17</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">husdjur &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">20</span>), <span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">15</span>), <span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">10</span>), <span class="kw">rep</span>(<span class="dv">3</span>,<span class="dv">5</span>))
+<span class="kw">mean</span>(husdjur)
+## [1] 1
+<span class="kw">median</span>(husdjur)
+## [1] 1</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">table</span>(husdjur)
+<span class="kw">plot</span>(<span class="kw">cumsum</span>(x),                      <span class="co"># cumsum för cumulative sum</span>
+     <span class="dt">type =</span> <span class="st">&quot;S&quot;</span>,                     <span class="co"># &quot;S&quot; för &quot;steps&quot;</span>
+     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">4</span>),                  <span class="co"># Undre och övre gräns för x</span>
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">50</span>),                 <span class="co"># Undre och övre gräns för y</span>
+     <span class="dt">xlab =</span> <span class="st">&quot;Antal Husdjur&quot;</span> ,        <span class="co"># Text på x-axeln</span>
+     <span class="dt">ylab =</span> <span class="st">&quot;Summa Antal Familjer&quot;</span>)  <span class="co"># Text på y-axeln</span>
+
+<span class="kw">segments</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">y0 =</span> <span class="dv">0</span>, <span class="dt">x1 =</span> <span class="dv">0</span>, <span class="dt">y1 =</span> <span class="dv">20</span>)
+<span class="kw">segments</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">y0 =</span> <span class="dv">20</span>, <span class="dt">x1 =</span> <span class="dv">1</span>, <span class="dt">y1 =</span> <span class="dv">20</span>)
+<span class="kw">segments</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">y0 =</span> <span class="dv">25</span>,<span class="dt">x1 =</span> <span class="dv">1</span>, <span class="dt">y1 =</span> <span class="dv">25</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">lty =</span> <span class="dv">6</span>)
+<span class="kw">arrows</span>(<span class="dt">x0 =</span> <span class="dv">1</span>,<span class="dt">y0 =</span> <span class="dv">25</span>,<span class="dt">x1 =</span> <span class="dv">1</span>,<span class="dt">y1 =</span> <span class="dv">0</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>,<span class="dt">lwd=</span><span class="dv">2</span>, <span class="dt">lty =</span> <span class="dv">6</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+</div>
+<div id="uppgift-18" class="section level3 unnumbered">
+<h3>Uppgift 18</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">löner &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">341000</span>, <span class="dv">193000</span>, <span class="dv">167000</span>, <span class="dv">167000</span>, <span class="dv">156000</span>,
+           <span class="dv">154000</span>, <span class="dv">148000</span>, <span class="dv">148000</span>, <span class="dv">148000</span>, <span class="dv">148000</span>)
+
+<span class="kw">mean</span>(löner)
+## [1] 177000
+<span class="kw">median</span>(löner)
+## [1] 155000
+<span class="kw">table</span>(löner)
+## löner
+## 148000 154000 156000 167000 193000 341000 
+##      4      1      1      2      1      1
+
+<span class="kw">barplot</span>(<span class="kw">table</span>(löner)) <span class="co"># Sned fördelning -&gt; använd median</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+</div>
+<div id="uppgift-21" class="section level3 unnumbered">
+<h3>Uppgift 21</h3>
+<p>Vi har följande tabell</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Antal Olycksfall per dag</th>
+<th align="right">Frekvens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">0</td>
+<td align="right">21</td>
+</tr>
+<tr class="even">
+<td align="left">1</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Givetvis kan vi skapa vektorn och använda <code>mean()</code>och <code>sd()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tabell &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">21</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">18</span>),<span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">7</span>),<span class="kw">rep</span>(<span class="dv">3</span>,<span class="dv">3</span>),<span class="kw">rep</span>(<span class="dv">4</span>,<span class="dv">1</span>))
+<span class="kw">mean</span>(tabell)
+## [1] 0.9
+<span class="kw">var</span>(tabell)
+## [1] 0.9897959</code></pre></div>
+<p>Men säg att vi hade fått en stor dataframe, och det hade varit för mycket jobb för att skriva en massa <code>rep()</code>. Det vill säga, säg att någon gav oss <code>df</code> nedan</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="kw">c</span>(<span class="dv">21</span>,<span class="dv">18</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">1</span>)))
+<span class="kw">colnames</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;olycksfall&quot;</span>, <span class="st">&quot;frekvens&quot;</span>)
+df</code></pre></div>
+<pre><code>##   olycksfall frekvens
+## 1          0       21
+## 2          1       18
+## 3          2        7
+## 4          3        3
+## 5          4        1</code></pre>
+<p>Istället för att återskapa <code>tabell</code> ovan (som förvisso är väldigt enkelt - bara använd <code>table()</code>), så kan vi gå den långa vägen och använda.</p>
+<p><span class="math display">\[\bar{x} = \frac{\sum{f_i x_i}}{n}\]</span><br />
+<span class="math display">\[s^2 = \frac{\sum{f_i x_i^2}-\frac{\sum{(f_i x_i)}^2}{n}}{n-1}\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="kw">sum</span>(df<span class="op">$</span>frekvens)
+f =<span class="st"> </span>df<span class="op">$</span>frekvens
+x =<span class="st"> </span>df<span class="op">$</span>olycksfall
+
+medelvärde =<span class="st"> </span><span class="kw">sum</span>(f<span class="op">*</span>x)<span class="op">/</span>n
+varians =<span class="st"> </span>(<span class="kw">sum</span>(f<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>((f<span class="op">*</span>x))<span class="op">^</span><span class="dv">2</span><span class="op">/</span>n)  <span class="op">/</span><span class="st"> </span>(n<span class="op">-</span><span class="dv">1</span>)
+
+medelvärde
+## [1] 0.9
+varians
+## [1] 0.9897959</code></pre></div>
+</div>
+</div>
+<div id="spridningsdiagram-och-korrelation" class="section level2">
+<h2><span class="header-section-number">3.2</span> Spridningsdiagram och Korrelation</h2>
+<div id="uppgift-101" class="section level3 unnumbered">
+<h3>Uppgift 101</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">cbind</span>(<span class="kw">c</span>(<span class="dv">5500</span>,<span class="dv">6000</span>,<span class="dv">6500</span>,<span class="dv">6000</span>,<span class="dv">5000</span>,<span class="dv">6500</span>,<span class="dv">4500</span>,<span class="dv">5000</span>),
+                         <span class="kw">c</span>(<span class="dv">41</span>,<span class="dv">38</span>,<span class="dv">35</span>,<span class="dv">40</span>,<span class="dv">44</span>,<span class="dv">38</span>,<span class="dv">45</span>,<span class="dv">42</span>)))
+<span class="kw">colnames</span>(x) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Pris&quot;</span>,<span class="st">&quot;Försäljning&quot;</span>)</code></pre></div>
+<p>Vilket ger oss följande dataframe</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(x)</code></pre></div>
+<pre><code>##   Pris Försäljning
+## 1 5500          41
+## 2 6000          38
+## 3 6500          35
+## 4 6000          40
+## 5 5000          44
+## 6 6500          38</code></pre>
+<p>Korrelationsmatris</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(x)
+##                   Pris Försäljning
+## Pris         1.0000000  -0.9426412
+## Försäljning -0.9426412   1.0000000</code></pre></div>
+<p>Notera att vi egentligen inte behöver skriva <code>type=&quot;p&quot;</code> i <code>plot()</code> nedan, eftersom detta är default när man använder funktionen på objekt som <code>x</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(x, <span class="dt">type=</span> <span class="st">&quot;p&quot;</span> ,
+     <span class="dt">xlab =</span> <span class="st">&quot;Pris (kr)&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Försäljning (antal)&quot;</span>,
+     <span class="dt">pch=</span><span class="dv">16</span>)  <span class="co"># För at få prickarna ifyllda</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<p><em>Gör precis samma sak för uppgift 102</em></p>
+</div>
+<div id="uppgift-105" class="section level3 unnumbered">
+<h3>Uppgift 105</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>,
+                           <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>),
+                           <span class="kw">c</span>(<span class="dv">14</span>,<span class="dv">23</span>,<span class="dv">25</span>,<span class="dv">17</span>,<span class="dv">30</span>,<span class="dv">44</span>,<span class="dv">35</span>,<span class="dv">34</span>,<span class="dv">39</span>,<span class="dv">32</span>,<span class="dv">38</span>,<span class="dv">29</span>),
+                           <span class="kw">c</span>(<span class="dv">23</span>,<span class="dv">30</span>,<span class="dv">29</span>,<span class="dv">26</span>,<span class="dv">35</span>,<span class="dv">58</span>,<span class="dv">30</span>,<span class="dv">50</span>,<span class="dv">55</span>,<span class="dv">45</span>,<span class="dv">44</span>,<span class="dv">34</span>))
+
+<span class="kw">colnames</span>(dat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;person&quot;</span>,<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;Z&quot;</span>)
+
+Z &lt;-<span class="st"> </span>dat<span class="op">$</span>Z
+Y &lt;-<span class="st"> </span>dat<span class="op">$</span>Y</code></pre></div>
+<p>Såhär ser vår dataframe ut</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dat)
+##   person X  Y  Z
+## 1      1 3 14 23
+## 2      2 4 23 30
+## 3      3 6 25 29
+## 4      4 2 17 26
+## 5      5 5 30 35
+## 6      6 6 44 58</code></pre></div>
+<p>Korrelationsmatris igen</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(dat)
+##           person         X         Y         Z
+## person 1.0000000 0.3634301 0.6489737 0.5587045
+## X      0.3634301 1.0000000 0.7407156 0.6456707
+## Y      0.6489737 0.7407156 1.0000000 0.8650861
+## Z      0.5587045 0.6456707 0.8650861 1.0000000</code></pre></div>
+<p>Vi ser att Y verkar ha högst korrelation med X, ungefär <span class="math inline">\(0.74\)</span>.</p>
+<p>Linjär regression i R är enkelt. I funktionen <code>lm()</code> anger du vilken data du vill använda, i vårt fall <code>data = dat</code>, formulan skrivs på formen <code>formula = y~z</code>. Ett intercept skattas per default, men kan undvikas genom att skriva <code>-1</code> i formulan, i.e <code>y~x-1</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>Z, dat)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Y ~ Z, data = dat)
+## 
+## Coefficients:
+## (Intercept)            Z  
+##      4.7390       0.6604</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Z, Y, <span class="dt">pch=</span><span class="dv">16</span>)
+<span class="kw">abline</span>(<span class="kw">lm</span>(Y <span class="op">~</span><span class="st"> </span>Z, dat), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+</div>
+<div id="uppgift-107" class="section level3 unnumbered">
+<h3>Uppgift 107</h3>
+<p>Förbered data</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res &lt;-<span class="st"> </span><span class="kw">cbind.data.frame</span>(<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;F&quot;</span>),
+                           <span class="kw">c</span>(<span class="fl">11.2</span>, <span class="fl">11.4</span>, <span class="fl">10.8</span>, <span class="fl">10.9</span>, <span class="fl">11.0</span> , <span class="fl">11.3</span>),
+                           <span class="kw">c</span>(<span class="dv">676</span>, <span class="dv">660</span>, <span class="dv">685</span>, <span class="dv">670</span>, <span class="dv">690</span>, <span class="dv">669</span>))
+
+<span class="kw">colnames</span>(res) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pers&quot;</span>,<span class="st">&quot;löp&quot;</span>,<span class="st">&quot;hopp&quot;</span>)</code></pre></div>
+<p>Beräkningar</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(res<span class="op">$</span>löp,res<span class="op">$</span>hopp)</code></pre></div>
+<pre><code>## [1] -0.695163</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(res<span class="op">$</span>löp)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   10.80   10.93   11.10   11.10   11.28   11.40</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(res<span class="op">$</span>hopp)</code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   660.0   669.2   673.0   675.0   682.8   690.0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span>res<span class="op">$</span>löp
+x &lt;-<span class="st"> </span>res<span class="op">$</span>hopp
+
+<span class="kw">plot</span>(x,y,
+     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">650</span>,<span class="dv">700</span>),
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">12</span>),
+     <span class="dt">pch =</span> <span class="dv">16</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Löp (sek)&quot;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Hopp (cm)&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+</div>
+</div>
+<div id="tidsserier" class="section level2">
+<h2><span class="header-section-number">3.3</span> Tidsserier</h2>
+<div id="uppgift-401" class="section level3 unnumbered">
+<h3>Uppgift 401</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="kw">c</span>(<span class="fl">0.175</span>, <span class="fl">0.249</span>, <span class="fl">0.279</span>, <span class="fl">0.376</span>, <span class="fl">0.528</span>, <span class="fl">0.781</span>, <span class="fl">1.123</span>, <span class="fl">1.681</span>, <span class="fl">3.131</span>)
+t &lt;-<span class="st"> </span><span class="dv">1970</span><span class="op">:</span><span class="dv">1978</span> <span class="op">-</span><span class="st"> </span><span class="dv">1974</span>
+
+<span class="kw">lm</span>(y<span class="op">~</span>t)
+## 
+## Call:
+## lm(formula = y ~ t)
+## 
+## Coefficients:
+## (Intercept)            t  
+##      0.9248       0.3035</code></pre></div>
+</div>
+<div id="uppgift-402" class="section level3 unnumbered">
+<h3>Uppgift 402</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="kw">c</span>(<span class="fl">0.175</span>, <span class="fl">0.249</span>, <span class="fl">0.279</span>, <span class="fl">0.376</span>, <span class="fl">0.528</span>, <span class="fl">0.781</span>, <span class="fl">1.123</span>, <span class="fl">1.681</span>, <span class="fl">3.131</span>)
+
+y &lt;-<span class="st"> </span><span class="kw">ts</span>(y,
+        <span class="dt">start =</span> <span class="dv">1970</span>,
+        <span class="dt">end =</span> <span class="dv">1978</span>,
+        <span class="dt">frequency =</span> <span class="dv">1</span>)
+
+<span class="kw">plot.ts</span>(y)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>Vi försöker igen med en expoentiell trend.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y_prime =<span class="st"> </span><span class="kw">log</span>(y,<span class="dt">base =</span> <span class="dv">10</span>)
+<span class="kw">lm</span>(y_prime<span class="op">~</span>t)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y_prime ~ t)
+## 
+## Coefficients:
+## (Intercept)            t  
+##     -0.2170       0.1504</code></pre>
+<p>För att få tillbaka vårt önskade resulat (se lösningarna för detaljer) så löser vi</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">lm</span>(y_prime<span class="op">~</span>t)
+<span class="dv">10</span><span class="op">^</span>m<span class="op">$</span>coefficients</code></pre></div>
+<pre><code>## (Intercept)           t 
+##   0.6067278   1.4139314</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="kom-igang.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ovningskompendium-sannolikhetslara-och-inferens.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

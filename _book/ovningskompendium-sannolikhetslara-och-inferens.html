@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Lösningar i R (samt lite annat kul)</title>
+  <meta name="description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Lösningar i R (samt lite annat kul)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
+  <meta name="github-repo" content="shitoushan/losningar" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Lösningar i R (samt lite annat kul)" />
+  
+  <meta name="twitter:description" content="Lösningar för vissa uppgifter i kursen Statstik A4/A8" />
+  
+
+<meta name="author" content="Erik Stenberg">
+
+
+<meta name="date" content="2018-04-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="ovningskompendium-deskriptiv-statistik.html">
+<link rel="next" href="andra-paket.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.0/htmlwidgets.js"></script>
+<link href="libs/leaflet-0.7.7/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-0.7.7/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<link href="libs/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet" />
+<script src="libs/leaflet-label-0.2.2/leaflet.label.js"></script>
+<script src="libs/Proj4Leaflet-0.7.2/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-0.7.2/proj4leaflet.js"></script>
+<script src="libs/leaflet-binding-1.1.0/leaflet.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduktion</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#motivering"><i class="fa fa-check"></i><b>1.1</b> Motivering</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#varfor-r"><i class="fa fa-check"></i><b>1.2</b> Varför R?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="kom-igang.html"><a href="kom-igang.html"><i class="fa fa-check"></i><b>2</b> Kom igång</a><ul>
+<li class="chapter" data-level="2.1" data-path="kom-igang.html"><a href="kom-igang.html#viktiga-funktioner"><i class="fa fa-check"></i><b>2.1</b> Viktiga funktioner</a></li>
+<li class="chapter" data-level="2.2" data-path="kom-igang.html"><a href="kom-igang.html#funktioner-och-paket"><i class="fa fa-check"></i><b>2.2</b> Funktioner och paket</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html"><i class="fa fa-check"></i><b>3</b> Övningskompendium Deskriptiv Statistik</a><ul>
+<li class="chapter" data-level="3.1" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#deskription"><i class="fa fa-check"></i><b>3.1</b> Deskription</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-16"><i class="fa fa-check"></i>Uppgift 16</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppigift-17"><i class="fa fa-check"></i>Uppigift 17</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-18"><i class="fa fa-check"></i>Uppgift 18</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-21"><i class="fa fa-check"></i>Uppgift 21</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#spridningsdiagram-och-korrelation"><i class="fa fa-check"></i><b>3.2</b> Spridningsdiagram och Korrelation</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-101"><i class="fa fa-check"></i>Uppgift 101</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-105"><i class="fa fa-check"></i>Uppgift 105</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-107"><i class="fa fa-check"></i>Uppgift 107</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#tidsserier"><i class="fa fa-check"></i><b>3.3</b> Tidsserier</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-401"><i class="fa fa-check"></i>Uppgift 401</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-deskriptiv-statistik.html"><a href="ovningskompendium-deskriptiv-statistik.html#uppgift-402"><i class="fa fa-check"></i>Uppgift 402</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html"><i class="fa fa-check"></i><b>4</b> Övningskompendium Sannolikhetslära och Inferens</a><ul>
+<li class="chapter" data-level="4.1" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#sannolikhetslara"><i class="fa fa-check"></i><b>4.1</b> Sannolikhetslära</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-5"><i class="fa fa-check"></i>Uppgift 5</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-28"><i class="fa fa-check"></i>Uppgift 28</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-39"><i class="fa fa-check"></i>Uppgift 39</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-40"><i class="fa fa-check"></i>Uppgift 40</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-42"><i class="fa fa-check"></i>Uppgift 42</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#statistisk-inferens"><i class="fa fa-check"></i><b>4.2</b> Statistisk Inferens</a><ul>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-11"><i class="fa fa-check"></i>Uppgift 11</a></li>
+<li class="chapter" data-level="" data-path="ovningskompendium-sannolikhetslara-och-inferens.html"><a href="ovningskompendium-sannolikhetslara-och-inferens.html#uppgift-17"><i class="fa fa-check"></i>Uppgift 17</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="andra-paket.html"><a href="andra-paket.html"><i class="fa fa-check"></i><b>5</b> Andra paket</a><ul>
+<li class="chapter" data-level="5.1" data-path="andra-paket.html"><a href="andra-paket.html#leaflet"><i class="fa fa-check"></i><b>5.1</b> leaflet</a></li>
+<li class="chapter" data-level="5.2" data-path="andra-paket.html"><a href="andra-paket.html#rtweet"><i class="fa fa-check"></i><b>5.2</b> rtweet</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Lösningar i R (samt lite annat kul)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ovningskompendium-sannolikhetslara-och-inferens" class="section level1">
+<h1><span class="header-section-number">4</span> Övningskompendium Sannolikhetslära och Inferens</h1>
+<div id="sannolikhetslara" class="section level2">
+<h2><span class="header-section-number">4.1</span> Sannolikhetslära</h2>
+<div id="uppgift-5" class="section level3 unnumbered">
+<h3>Uppgift 5</h3>
+<p><code>choose(n,k)</code> räknar ut <span class="math inline">\({n\choose k}\)</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">choose</span>(<span class="dv">8</span>,<span class="dv">3</span>) <span class="co">#a)</span>
+## [1] 56
+<span class="kw">choose</span>(<span class="dv">8</span>,<span class="dv">5</span>) <span class="co">#b)</span>
+## [1] 56
+<span class="kw">choose</span>(<span class="dv">5</span>,<span class="dv">3</span>)<span class="op">*</span><span class="kw">choose</span>(<span class="dv">3</span>,<span class="dv">2</span>) <span class="co">#c)</span>
+## [1] 30</code></pre></div>
+</div>
+<div id="uppgift-28" class="section level3 unnumbered">
+<h3>Uppgift 28</h3>
+<p>Funktionen <code>dbinom</code> har tre argument, <code>x</code>,<code>p</code> och <code>n</code> och räknar ut</p>
+<p><code>p(x) = choose(n, x) p^x (1-p)^(n-x)</code></p>
+<p>det vill säga <span class="math display">\[p(x) = {n \choose x}  p^x(1-p)^{n-x}\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Låt <span class="math inline">\(X\)</span> vara <span class="math inline">\(Bi(5, 0.2)\)</span>. Bestäm <span class="math inline">\(Pr(X = 2)\)</span></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">size=</span><span class="dv">5</span>, <span class="dt">prob=</span><span class="fl">0.2</span>) 
+## [1] 0.2048</code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Låt <span class="math inline">\(X\)</span> vara <span class="math inline">\(Bi(5, 0.8)\)</span>. Bestäm <span class="math inline">\(Pr(X = 3)\)</span></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">size=</span><span class="dv">5</span>, <span class="dt">prob=</span><span class="fl">0.8</span>) 
+## [1] 0.2048</code></pre></div>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Låt <span class="math inline">\(X\)</span> vara <span class="math inline">\(Bi (8, 0.4)\)</span>. Bestäm <span class="math inline">\(Pr(X \le 3)\)</span> Nu har vi <span class="math inline">\(\leq\)</span> istället för <span class="math inline">\(=\)</span>, vilket gör att vi måste summera</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">0</span>, <span class="dt">size=</span><span class="dv">8</span>, <span class="dt">prob=</span><span class="fl">0.4</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">size=</span><span class="dv">8</span>, <span class="dt">prob=</span><span class="fl">0.4</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">size=</span><span class="dv">8</span>, <span class="dt">prob=</span><span class="fl">0.4</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">size=</span><span class="dv">8</span>, <span class="dt">prob=</span><span class="fl">0.4</span>)
+## [1] 0.5940864
+
+<span class="co"># Enklare:</span>
+<span class="kw">sum</span>(<span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size=</span><span class="dv">8</span>, <span class="dt">prob=</span><span class="fl">0.4</span>))
+## [1] 0.5940864</code></pre></div>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Låt <span class="math inline">\(X\)</span> vara <span class="math inline">\(Bi(20, 0.3)\)</span>. Bestäm <span class="math inline">\(Pr(X &gt; 5)\)</span></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">size=</span><span class="dv">20</span>, <span class="dt">prob=</span><span class="fl">0.3</span>))
+## [1] 0.5836292</code></pre></div>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Låt <span class="math inline">\(X\)</span> vara <span class="math inline">\(Bi (10, 0.6)\)</span>. Bestäm <span class="math inline">\(Pr(X \le 5)\)</span></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">size=</span><span class="dv">10</span>, <span class="dt">prob=</span><span class="fl">0.4</span>))
+## [1] 0.3668967</code></pre></div>
+</div>
+<div id="uppgift-39" class="section level3 unnumbered">
+<h3>Uppgift 39</h3>
+<p>Här är kod för att själv skapa en normal-kurva. Du kan ändra det skuggade området genom att ändra på <code>lower.x</code> och <code>upper.x</code>. Du kan också ändra standarddavvikelse och medelvärde genom att ändra på <code>sigma</code> respektive <code>mu</code> i funktionen <code>skugga()</code>. Detta är också ett exempel på hur man själv kan skapa en enkel funktion i R, men det är överkurs.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">skugga &lt;-<span class="st"> </span><span class="cf">function</span>(lower.x, upper.x, <span class="dt">mu=</span><span class="dv">0</span>, <span class="dt">sigma=</span><span class="dv">1</span>,<span class="dt">col=</span><span class="st">&quot;grey&quot;</span>,<span class="dt">density=</span><span class="ot">NULL</span>){
+  step &lt;-<span class="st"> </span>(upper.x <span class="op">-</span><span class="st"> </span>lower.x) <span class="op">/</span><span class="st"> </span><span class="dv">100</span>
+  bounds &lt;-<span class="st"> </span><span class="kw">c</span>(mu<span class="op">-</span><span class="dv">3</span><span class="op">*</span>sigma, mu<span class="op">+</span><span class="dv">3</span><span class="op">*</span>sigma)
+  cord.x &lt;-<span class="st"> </span><span class="kw">c</span>(lower.x,<span class="kw">seq</span>(lower.x,upper.x,step),upper.x)
+  cord.y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">dnorm</span>(<span class="kw">seq</span>(lower.x,upper.x,step),mu,sigma),<span class="dv">0</span>)
+  <span class="kw">curve</span>(<span class="kw">dnorm</span>(x,mu,sigma),<span class="dt">xlim=</span>bounds,<span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>,<span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>,<span class="dt">bty=</span><span class="st">&quot;n&quot;</span>) 
+  <span class="kw">polygon</span>(cord.x,cord.y,<span class="dt">col=</span>col,<span class="dt">density =</span> density)
+}</code></pre></div>
+<p>Återskapa de fyra kurvorna i uppgift 39 med</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="dv">0</span>, <span class="dt">upper.x =</span> <span class="dv">1</span>)   <span class="co"># i</span>
+<span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="dv">1</span>, <span class="dt">upper.x =</span> <span class="dv">2</span>)   <span class="co"># ii</span>
+<span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="op">-</span><span class="dv">1</span>, <span class="dt">upper.x =</span> <span class="dv">2</span>)  <span class="co"># iii</span>
+<span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="op">-</span><span class="dv">3</span>, <span class="dt">upper.x =</span> <span class="op">-</span><span class="dv">1</span>) <span class="co"># iv</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-56-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-56-3.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-56-4.png" width="50%" /></p>
+<p>Dessa kurvor är väldigt bra hjälp för att förstå vad man bör göra för trix för att få fram rätt svar. I a) är vi intresserade av <span class="math display">\[Pr(0&lt;Z&lt;1)\]</span> Vi är alltså ute efter den blåa skuggade delen av Figur <a href="ovningskompendium-sannolikhetslara-och-inferens.html#fig:dens-fig">4.1</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>( <span class="op">-</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">density=</span><span class="dv">10</span>)
+<span class="kw">polygon</span>(cordx, cordy,<span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="dt">density=</span><span class="dv">51</span>)</code></pre></div>
+<div class="figure"><span id="fig:dens-fig"></span>
+<img src="_main_files/figure-html/dens-fig-1.png" alt="$Pr(0&lt;Z&lt;1)$" width="672" />
+<p class="caption">
+Figure 4.1: <span class="math inline">\(Pr(0&lt;Z&lt;1)\)</span>
+</p>
+</div>
+<p>Första steget är att räkna ut skuggan under <strong>hela den</strong> skuggade delen, för att sedan subtrahera den <strong>röda skuggade</strong> delen. Kvar blir bara arean under den blåa skuggade delen.</p>
+<p>det vill säga <span class="math display">\[Pr(0&lt;Z&lt;1) \,=\, Pr(Z&lt;1) \,- \,Pr(Z&lt;0)\]</span> eller</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">0</span>,<span class="dt">mean =</span> <span class="dv">0</span>,<span class="dt">sd =</span> <span class="dv">1</span>)
+## [1] 0.3413447</code></pre></div>
+<p>Faktum är att vi inte ens behöver specifiera <code>mean=0</code> och <code>sd=1</code> eftersom funktionen antar att du menar standard normal om inget annat anges</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="dv">1</span>)  <span class="co"># (ii)</span>
+## [1] 0.1359051
+<span class="kw">pnorm</span>(<span class="dv">2</span>) <span class="op">-</span><span class="st"> </span><span class="kw">pnorm</span>(<span class="op">-</span><span class="dv">1</span>) <span class="co"># (iii)</span>
+## [1] 0.8185946
+<span class="kw">pnorm</span>(<span class="op">-</span><span class="dv">1</span>)            <span class="co"># (iv)</span>
+## [1] 0.1586553</code></pre></div>
+</div>
+<div id="uppgift-40" class="section level3 unnumbered">
+<h3>Uppgift 40</h3>
+<p>Även detta är väldigt enkelt i R. Observera att om du tänkt att läsa om än bara en enda högskolepoäng mer än vad som krävs i statistik så är det lika bra att du här och nu memorerar att Z-värdet som har <span class="math inline">\(97,5 \%\)</span> av arean till vänster om sig är <span class="math inline">\(1,96\)</span>. Slösa aldrig dyrbar tenta-tid till att gå till Tabell 5.2.B för att hitta 1,96. Eller 1.645 heller för den delen (<span class="math inline">\(95 \%\)</span>)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.975</span>)
+## [1] 1.959964
+<span class="co"># Vi kan använda round() för att avrunda till önskat antal decimaler</span>
+<span class="kw">round</span>(<span class="kw">qnorm</span>(<span class="fl">0.975</span>), <span class="dt">digits =</span> <span class="dv">2</span>)
+## [1] 1.96
+<span class="kw">round</span>(<span class="kw">qnorm</span>(<span class="fl">0.33</span>), <span class="dt">digits =</span> <span class="dv">2</span>)
+## [1] -0.44</code></pre></div>
+</div>
+<div id="uppgift-42" class="section level3 unnumbered">
+<h3>Uppgift 42</h3>
+<p>Vi använder oss återigen av <code>pnorm()</code></p>
+<p>I och med att normalfördelningne är symmetrisk så räcker det med att vi tittar på ena sidan och multiplicerar arean med två, precis som i facit. Det vill säga, vi hittar följande area och multiplicerar med två</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="dt">mu=</span><span class="dv">10</span>,<span class="dt">sigma=</span><span class="dv">4</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="75%" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">pnorm</span>(<span class="dv">0</span>,<span class="dt">mean=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">4</span>)<span class="op">*</span><span class="dv">2</span>,<span class="dv">4</span>)
+## [1] 0.0124</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>(<span class="dv">6</span>,<span class="dv">15</span>,<span class="dt">mu =</span> <span class="dv">10</span>, <span class="dt">sigma =</span> <span class="dv">4</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="75%" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">4</span>)<span class="op">-</span><span class="kw">pnorm</span>(<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">4</span>)
+## [1] 0.735695</code></pre></div>
+</div>
+</div>
+<div id="statistisk-inferens" class="section level2">
+<h2><span class="header-section-number">4.2</span> Statistisk Inferens</h2>
+<div id="uppgift-11" class="section level3 unnumbered">
+<h3>Uppgift 11</h3>
+<p>Vi har ett stickprov om 8 hissåkare, och vi kan anta att vikten i populationen är normalfördelad. Vi kan således använda formeln</p>
+<p><span class="math display">\[ \bar{x} \pm t_{n-1,\alpha/2}\frac{s}{\sqrt{n}} \]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stickprov &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">71</span>, <span class="dv">85</span>, <span class="dv">68</span>, <span class="dv">72</span>, <span class="dv">58</span>, <span class="dv">76</span>, <span class="dv">74</span>, <span class="dv">80</span>)
+xbar &lt;-<span class="st"> </span><span class="kw">mean</span>(stickprov)   <span class="co"># stickprovsmedelvärde</span>
+n &lt;-<span class="st"> </span><span class="kw">length</span>(stickprov)    <span class="co"># stickprovsstorlek</span>
+s =<span class="st"> </span><span class="kw">sd</span>(stickprov)         <span class="co"># stickprovsstandardavvikelse</span>
+t =<span class="st"> </span><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> n<span class="op">-</span><span class="dv">1</span>)   <span class="co"># t-förd. med n-1 frihetsgrader</span>
+
+
+xbar <span class="op">-</span><span class="st"> </span>t <span class="op">*</span><span class="st"> </span>s<span class="op">/</span><span class="kw">sqrt</span>(n)
+## [1] 66.2376
+xbar <span class="op">+</span><span class="st"> </span>t <span class="op">*</span><span class="st"> </span>s<span class="op">/</span><span class="kw">sqrt</span>(n)
+## [1] 79.7624</code></pre></div>
+</div>
+<div id="uppgift-17" class="section level3 unnumbered">
+<h3>Uppgift 17</h3>
+<p><span class="math display">\[H_0 \: : \mu=9.75 \\ H_1 \: : \mu&lt;9.75\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stickprov &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">9.0</span>, <span class="fl">9.2</span>, <span class="fl">9.5</span>, <span class="fl">10.1</span>, <span class="fl">9.8</span>, <span class="fl">9.3</span>, <span class="fl">9.7</span>, <span class="fl">9.6</span>, <span class="fl">10.0</span> ,<span class="fl">9.2</span>)
+
+<span class="kw">t.test</span>(stickprov,
+       <span class="dt">mu=</span><span class="fl">9.75</span>,                 <span class="co"># Noll-hypotesen</span>
+       <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>,    <span class="co"># Vad för slags mothypotes har vi? </span>
+       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)       <span class="co"># Vilken signifikansnivå?</span>
+## 
+##  One Sample t-test
+## 
+## data:  stickprov
+## t = -1.8156, df = 9, p-value = 0.05141
+## alternative hypothesis: true mean is less than 9.75
+## 95 percent confidence interval:
+##      -Inf 9.752022
+## sample estimates:
+## mean of x 
+##      9.54</code></pre></div>
+<p>Vi ser att <span class="math inline">\(t_{obs} = -1.8156\)</span> och eftersom p-värdet <strong>inte</strong> är mindre än <span class="math inline">\(0.05\)</span> så kan vi <strong>ej</strong> förkasta noll-hypotesen, då vår förvalda signifikansnivå var <span class="math inline">\(5 \%\)</span>.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ovningskompendium-deskriptiv-statistik.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="andra-paket.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
