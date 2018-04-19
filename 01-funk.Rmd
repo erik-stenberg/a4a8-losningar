@@ -35,7 +35,7 @@ Vektorer är den absolut vanligaste datatypen i R, och du kommer vid flera tillf
 x <- c(1,5,7,2,4,6,7)  # jag skapar en vektor och kallar den x
 is.vector(x)           # jag frågar R om x är en vektor
 ```
-I detta fallet är `x` alltså en numerisk vektor, men det finns andra sorter.
+I detta fallet är `x` alltså en numerisk vektor, men det finns olika sorters vektorer.
 
 ```{r, collapse=TRUE}
 y <- c("R","är","kul")
@@ -216,7 +216,7 @@ Faktum är att **Tabell 5.2A** i formelsamlingen kan återskapas genom att kalla
 round(pnorm(seq(0,3.59,by=0.01),mean = 0,sd = 1),4)
 ```
 
-Motsvarande funktion för att hitta vilket z-värde som representerar en given sannolikhet (**Tabell 5.2B**) är funktionen `qnorm()`. Tabell 5.2B ger dig vilket Z-värde som har $P$ procent *till höger om sig*, medan `qnorm()` ger dig vilket z-värde som har $P$ procent till *vänster om sig*. Så om vi skriver `-qnorm()` får vi samma resultat som tabellen i formelsamligen. Det vill säga
+Motsvarande funktion för att hitta vilket z-värde som representerar en given sannolikhet (**Tabell 5.2B**) är funktionen `qnorm()`. Tabell 5.2B ger dig vilket z-värde som har $P$ procent *till höger om sig*, medan `qnorm()` ger dig vilket z-värde som har $P$ procent till *vänster om sig*. Så om vi skriver `-qnorm()` får vi samma resultat som tabellen i formelsamligen. Det vill säga
 
 
 ```{r,collapse=TRUE}

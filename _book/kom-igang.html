@@ -25,7 +25,7 @@
 <meta name="author" content="Erik Stenberg">
 
 
-<meta name="date" content="2018-04-19">
+<meta name="date" content="2018-04-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -194,7 +194,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">7</span>)  <span class="co"># jag skapar en vektor och kallar den x</span>
 <span class="kw">is.vector</span>(x)           <span class="co"># jag frågar R om x är en vektor</span>
 ## [1] TRUE</code></pre></div>
-<p>I detta fallet är <code>x</code> alltså en numerisk vektor, men det finns andra sorter.</p>
+<p>I detta fallet är <code>x</code> alltså en numerisk vektor, men det finns olika sorters vektorer.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;R&quot;</span>,<span class="st">&quot;är&quot;</span>,<span class="st">&quot;kul&quot;</span>)
 <span class="kw">is.vector</span>(y)
 ## [1] TRUE
@@ -282,13 +282,13 @@ studenter &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="d
 <p>Ett annat paket som, likt de flesta andra paket, faktiskt innehåller flera funktioner är <strong>stats</strong> som innehåller funktioner för statistiska beräkningar med mera. Här är ett par exempel funktioner. <strong>stats</strong> är förinstallerat och igång vid uppstart, så du behöver varken installera det med <code>install.packages(&quot;stats&quot;)</code> eller skriva <code>library(stats)</code>.</p>
 <p>Ett exempel på funktioner i <strong>stats</strong> är <code>rnorm()</code> som genererar slumpmässiga tal från normalfördelningen.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co"># Ger oss fem slumpmässiga nummer från N(0,1)</span>
-## [1]  0.56342007  0.47791866  0.04494871 -2.15711095 -0.15215089</code></pre></div>
+## [1] 0.53718686 0.23581001 0.02596106 0.36760896 1.29371258</code></pre></div>
 <p><code>n</code>, <code>mean</code> och <code>sd</code> är stickprovsstorlek, medelvärde och standardavvikelse respektive. De kallas <em>argument</em>. Funktionen <code>rnorm()</code> har bara dessa tre argument, och de behöver inte skrivas ut. Det vill säga, så länge du håller koll på i vilken ordning argumenten kommer så kan du lika gärna skriva</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># Samma resultat (men så klart nya tal)</span>
-## [1] -0.919841975 -0.645369495  0.003619549  1.105885779 -0.236082266</code></pre></div>
+## [1]  2.14712466 -2.65591963  2.45286750  0.06928663  1.11842168</code></pre></div>
 <p>Ofta har funktionernas argument ett “default” värde. Det vill säga, ett värde på argumentet om du inte själv specifierar det. I fallet <code>rnorm()</code> kan du säkert gissa dig till vilket medelvärde och vilken standardavvikelse som är <code>default</code>, nämligen <code>mean=0</code> och <code>sd=1</code>, det vill säga Z-fördelningen. Stickprovsstorlek har däremot inget <code>default</code>, och måste specifieras manuellt.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>)
-## [1]  0.69932743 -2.16824661  0.86137501 -0.07115046 -0.62172618</code></pre></div>
+## [1] -0.3138766 -0.9298538 -0.4781273  1.1027144 -1.5352705</code></pre></div>
 <p>Låt oss ta ett större stickprov, spara resultatet som <code>x</code> och skapa ett histogram, med funktionen <code>hist()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100000</span>)
 <span class="kw">hist</span>(x)</code></pre></div>
@@ -349,7 +349,7 @@ studenter &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="d
 ## [331] 0.9995 0.9995 0.9995 0.9996 0.9996 0.9996 0.9996 0.9996 0.9996 0.9997
 ## [341] 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9997 0.9998
 ## [351] 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998 0.9998</code></pre>
-<p>Motsvarande funktion för att hitta vilket z-värde som representerar en given sannolikhet (<strong>Tabell 5.2B</strong>) är funktionen <code>qnorm()</code>. Tabell 5.2B ger dig vilket Z-värde som har <span class="math inline">\(P\)</span> procent <em>till höger om sig</em>, medan <code>qnorm()</code> ger dig vilket z-värde som har <span class="math inline">\(P\)</span> procent till <em>vänster om sig</em>. Så om vi skriver <code>-qnorm()</code> får vi samma resultat som tabellen i formelsamligen. Det vill säga</p>
+<p>Motsvarande funktion för att hitta vilket z-värde som representerar en given sannolikhet (<strong>Tabell 5.2B</strong>) är funktionen <code>qnorm()</code>. Tabell 5.2B ger dig vilket z-värde som har <span class="math inline">\(P\)</span> procent <em>till höger om sig</em>, medan <code>qnorm()</code> ger dig vilket z-värde som har <span class="math inline">\(P\)</span> procent till <em>vänster om sig</em>. Så om vi skriver <code>-qnorm()</code> får vi samma resultat som tabellen i formelsamligen. Det vill säga</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">-</span><span class="kw">qnorm</span>(<span class="fl">0.025</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
 ## [1] 1.959964</code></pre></div>
 <p>Vilket motsvara följande area under Z-fördelningen.</p>
