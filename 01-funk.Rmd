@@ -139,10 +139,18 @@ Ett annat paket som, likt de flesta andra paket, faktiskt innehåller flera funk
 
 Ett exempel på funktioner i **stats** är `rnorm()` som genererar slumpmässiga tal från normalfördelningen.
 
+```{r,echo=FALSE}
+set.seed(123)
+```
+
 ```{r,collapse=TRUE}
 rnorm(n = 5, mean = 0, sd = 1) # Ger oss fem slumpmässiga nummer från N(0,1)
 ```
 `n`, `mean` och `sd` är stickprovsstorlek, medelvärde och standardavvikelse respektive. De kallas *argument*. Funktionen `rnorm()` har bara dessa tre argument, och de behöver inte skrivas ut. Det vill säga, så länge du håller koll på i vilken ordning argumenten kommer så kan du lika gärna skriva
+
+```{r,echo=FALSE}
+set.seed(1234)
+```
 
 ```{r,collapse=TRUE}
 rnorm(5,0,1) # Samma resultat (men så klart nya tal)

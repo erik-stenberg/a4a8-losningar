@@ -244,7 +244,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="dv">1</span>, <span class="dt">upper.x =</span> <span class="dv">2</span>)   <span class="co"># ii</span>
 <span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="op">-</span><span class="dv">1</span>, <span class="dt">upper.x =</span> <span class="dv">2</span>)  <span class="co"># iii</span>
 <span class="kw">skugga</span>(<span class="dt">lower.x =</span> <span class="op">-</span><span class="dv">3</span>, <span class="dt">upper.x =</span> <span class="op">-</span><span class="dv">1</span>) <span class="co"># iv</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-67-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-67-3.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-67-4.png" width="50%" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-69-2.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-69-3.png" width="50%" /><img src="_main_files/figure-html/unnamed-chunk-69-4.png" width="50%" /></p>
 <p>Dessa kurvor är väldigt bra hjälp för att förstå vad man bör göra för trix för att få fram rätt svar. I a) är vi intresserade av <span class="math display">\[Pr(0&lt;Z&lt;1)\]</span> Vi är alltså ute efter den blåa skuggade delen av Figur <a href="ovningskompendium-sannolikhetslara-och-inferens.html#fig:dens-fig">4.1</a>.</p>
 <div class="figure"><span id="fig:dens-fig"></span>
 <img src="_main_files/figure-html/dens-fig-1.png" alt="$Pr(0&lt;Z&lt;1)$" width="672" />
@@ -280,11 +280,11 @@ Figure 4.1: <span class="math inline">\(Pr(0&lt;Z&lt;1)\)</span>
 <p>Vi använder oss återigen av <code>pnorm()</code></p>
 <p>I och med att normalfördelningne är symmetrisk så räcker det med att vi tittar på ena sidan och multiplicerar arean med två, precis som i facit. Det vill säga, vi hittar följande area och multiplicerar med två</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">0</span>,<span class="dt">mu=</span><span class="dv">10</span>,<span class="dt">sigma=</span><span class="dv">4</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="75%" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="75%" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">pnorm</span>(<span class="dv">0</span>,<span class="dt">mean=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">4</span>)<span class="op">*</span><span class="dv">2</span>,<span class="dv">4</span>)
 ## [1] 0.0124</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">skugga</span>(<span class="dv">6</span>,<span class="dv">15</span>,<span class="dt">mu =</span> <span class="dv">10</span>, <span class="dt">sigma =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="75%" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="75%" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pnorm</span>(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">4</span>)<span class="op">-</span><span class="kw">pnorm</span>(<span class="dv">6</span>,<span class="dv">10</span>,<span class="dv">4</span>)
 ## [1] 0.735695</code></pre></div>
 </div>

@@ -50,6 +50,10 @@ tweets$profile_image_url[1]
 
 
 ## quantmod
+```{r, echo=FALSE}
+options("getSymbols.warning4.0"=FALSE)
+```
+
 
 Paket-författarna själva beskriver quantmod som ett "Quantitative Financial Modelling and Trading Framework for R". Det finns en mängd funktioner, med här demonstrerar jag hur du kan ladda ner data från enskilda aktier eller börsindex. Du behöver registrera dig på [tiingo.com](https://www.tiingo.com/) för att få en API-nyckel. Efter registrering, logga in och gå till
 
@@ -102,7 +106,7 @@ Här kommer jag introducera paketet **dplyr** som är ett fantastiskt intuitivt 
 library(dplyr)
 ```
 
-<<<<<<< HEAD
+
 I dplyr finns ` %>% `. Med ` %>% ` (som kallas the pipe operator) behöver vi inte skriva det första argumentet i en funktion inuti själva funktionen. Det är mycket enklare att förstå med ett exempel. Notera hur dessa två funktioner (som avrundar `x` till en decimal) producerar samma resultat
 
 ```{r,collapse=TRUE}
@@ -159,48 +163,3 @@ med `mutate()` skapar vi nya kolumner baserat på befintliga kolumner. Det vill 
 gapminder %>% 
   mutate(gdp = gdpPercap*pop)
 ```
-=======
-## quantmod
-
-Paket-författaren själv beskriver quantmod som ett "Quantitative Financial Modelling and Trading Framework for R". Det finns en mängd funktioner, med här demonstrerar jag hur du kan ladda ner data från enskilda aktier eller börsindex. Du behöver registrera dig på [tiingo.com](https://www.tiingo.com/) för att få en API-nyckel. Efter registrering, logga in och gå till
->>>>>>> 479becfa4be46b3c6477c3cec0bb402c7872d369
-
-`API>Documentation>2.2.1 Daily Prices`
-
-En bit ner på sidan hittar du din API-nyckel
-
-```{r,echo=F}
-knitr::include_graphics("images/2.jpg")
-```
-
-
-```{r,echo=FALSE}
-source("_ignore/key.R")
-```
-
-
-```{r, eval=F}
-key <- "..............." # Byt ut .... mot din nyckel
-```
-
-Vi kan exempelvis ladda ner data Facebooks aktie, använd funktionen `getSymbols()`,
-argumentet `src` är varifrån vi hämtar data, `api.key` är helt enkelt din API-nyckel. Data kommer sparas som ett objekt `FB`.
-
-```{r,message=FALSE,warning=FALSE, collapse=TRUE}
-library(quantmod)
-getSymbols("FB", src = "tiingo",api.key = key) 
-?getSymbols
-```
-
-Vi kan inspektera de fem senaste dagarna med `tail()`...
-
-```{r,collapse=TRUE}
-tail(FB, 5)
-```
-
-...och skapa en tidsserieplot med `plot()`
-
-```{r,collapse=TRUE}
-plot(FB$FB.Close,col="black")
-```
-
