@@ -282,13 +282,13 @@ studenter &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="d
 <p>Ett annat paket som, likt de flesta andra paket, faktiskt innehåller flera funktioner är <strong>stats</strong> som innehåller funktioner för statistiska beräkningar med mera. Här är ett par exempel funktioner. <strong>stats</strong> är förinstallerat och igång vid uppstart, så du behöver varken installera det med <code>install.packages(&quot;stats&quot;)</code> eller skriva <code>library(stats)</code>.</p>
 <p>Ett exempel på funktioner i <strong>stats</strong> är <code>rnorm()</code> som genererar slumpmässiga tal från normalfördelningen.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>) <span class="co"># Ger oss fem slumpmässiga nummer från N(0,1)</span>
-## [1] 0.53718686 0.23581001 0.02596106 0.36760896 1.29371258</code></pre></div>
+## [1]  0.8077644 -1.1181642 -1.2410810 -0.3636979 -0.1207848</code></pre></div>
 <p><code>n</code>, <code>mean</code> och <code>sd</code> är stickprovsstorlek, medelvärde och standardavvikelse respektive. De kallas <em>argument</em>. Funktionen <code>rnorm()</code> har bara dessa tre argument, och de behöver inte skrivas ut. Det vill säga, så länge du håller koll på i vilken ordning argumenten kommer så kan du lika gärna skriva</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="co"># Samma resultat (men så klart nya tal)</span>
-## [1]  2.14712466 -2.65591963  2.45286750  0.06928663  1.11842168</code></pre></div>
+## [1]  0.3644021  0.1474495 -0.4041143  0.6466987  0.3955757</code></pre></div>
 <p>Ofta har funktionernas argument ett “default” värde. Det vill säga, ett värde på argumentet om du inte själv specifierar det. I fallet <code>rnorm()</code> kan du säkert gissa dig till vilket medelvärde och vilken standardavvikelse som är <code>default</code>, nämligen <code>mean=0</code> och <code>sd=1</code>, det vill säga Z-fördelningen. Stickprovsstorlek har däremot inget <code>default</code>, och måste specifieras manuellt.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">5</span>)
-## [1] -0.3138766 -0.9298538 -0.4781273  1.1027144 -1.5352705</code></pre></div>
+## [1]  1.1537718  0.7119327 -0.2580318 -0.6413481  0.6265246</code></pre></div>
 <p>Låt oss ta ett större stickprov, spara resultatet som <code>x</code> och skapa ett histogram, med funktionen <code>hist()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100000</span>)
 <span class="kw">hist</span>(x)</code></pre></div>
